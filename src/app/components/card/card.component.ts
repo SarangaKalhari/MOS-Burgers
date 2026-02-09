@@ -10,6 +10,21 @@ import { BurgerService } from '../../services/burger.service';
 export class CardComponent{
 
   @Input() burger: any;
+
+  
+qty: number = 1;
+
+increaseQty() {
+  this.qty++;
+}
+
+decreaseQty() {
+  if (this.qty > 1) {
+    this.qty--;
+  }
+}
+
+
   
 
 }

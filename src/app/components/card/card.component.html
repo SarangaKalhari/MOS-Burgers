@@ -28,15 +28,15 @@
                     
                     <button 
                         class="border border-gray-300 px-2 py-0.5 text-sm rounded hover:bg-gray-100"
-                        onclick="decreaseQty(this)">
+                        (click)="decreaseQty()">
                         −
                     </button>
 
-                    <span class="font-semibold text-sm qty">1</span>
+                    <span class="font-semibold text-sm qty">{{qty}}</span>
 
                     <button 
                         class="border border-gray-300 px-2 py-0.5 text-sm rounded hover:bg-gray-100"
-                        onclick="increaseQty(this)">
+                        (click)="increaseQty()">
                         +
                     </button>
 
