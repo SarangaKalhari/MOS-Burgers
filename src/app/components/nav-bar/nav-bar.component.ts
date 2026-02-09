@@ -9,5 +9,6 @@ import { Component, Input } from '@angular/core';
 export class NavBarComponent {
 
   @Input() button: any;
+  @Input() active: boolean = false;
 
 }

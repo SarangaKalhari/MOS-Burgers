@@ -119,7 +119,7 @@ export class BurgerService {
     },
     {
       id: 19,
-      title: 'Korean Combo Beef Burger',
+      title: 'Korean Beef Burger',
       image: 'images/korean combo beef burger.png',
       price: '675.00'
     },

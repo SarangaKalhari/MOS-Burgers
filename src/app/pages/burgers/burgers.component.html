@@ -13,15 +13,22 @@
 
         <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
             @for(button of buttons; track button.id){
-                <app-nav-bar [button]="button"></app-nav-bar>
+
+            <app-nav-bar [button]="button" [active]="selectedCategory === button.key"
+                (click)="selectCategory(button.key)"></app-nav-bar>
             }
         </div>
 
         <!-- Card Section -->
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4 overflow-auto">
-            @for(burger of burgers; track burger.id){
-            <app-card [burger]="burger"></app-card>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1 mt-4 overflow-auto">
+            @if (visibleItems.length > 0) {
+            @for (item of visibleItems; track item.id) {
+            <app-card [burger]="item"></app-card>
             }
+            } @else {
+            <p class="text-gray-400">No items available</p>
+            }
+
         </div>
 
     </div>

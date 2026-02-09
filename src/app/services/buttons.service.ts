@@ -11,18 +11,22 @@ export class ButtonsService {
     {
       id:1,
       name:"Burgers",
+      key: "burgers"
     },
     {
       id:2,
-      name:"Beverages"
+      name:"Beverages",
+      key: "beverages"
     },
     {
       id:3,
-      name:"Appetizers"
+      name:"Appetizers",
+      key: "appetizers"
     },
     {
       id: 4,
-      name: "Deserts"
+      name: "Deserts",
+      key: "deserts"
     }
   ]
 
