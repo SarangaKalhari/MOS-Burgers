@@ -1,52 +1,67 @@
-<!-- Background Overlay -->
-<div class="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+<!-- Overlay -->
+<div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
 
-  <!-- Bill Container -->
-  <div class="bg-white rounded-xl shadow-xl p-5">
+  <!-- Modal -->
+  <div class="bg-white w-100 rounded-lg shadow-lg p-6">
 
-    <!-- Header -->
-    <div class="text-center border-b pb-2 mb-3">
-      <h2 class="text-xl font-bold">Burger Shop</h2>
-      <p class="text-sm text-gray-500">Payment Bill</p>
+    <h2 class="text-xl font-bold mb-4 text-center">
+      Payment Bill
+    </h2>
+
+    <!-- Items -->
+    <div class="h-80 overflow-y-auto">
+
+      @if(cartItems.length > 0){
+
+        @for(item of cartItems; track item.id){
+
+          <div class="flex justify-between border-b py-2">
+
+            <div>
+              <p class="font-semibold">{{ item.title }}</p>
+              <p class="text-sm text-gray-500">
+                {{ item.qty }} × Rs {{ item.price }}
+              </p>
+            </div>
+
+            <p class="font-semibold">
+              Rs {{ item.qty * item.price }}
+            </p>
+
+          </div>
+
+        }
+
+      } @else {
+
+        <p class="text-center text-gray-400">
+          No Items Added
+        </p>
+
+      }
+
     </div>
-
-    <!-- Order Items -->
-    <div class=" overflow-auto mb-3">
-
-      <!-- Sample Item Row -->
-      <!-- Later you can loop items using *ngFor -->
-      <div class="flex justify-between text-sm mb-1">
-        <span>Chicken Burger</span>
-        <span>Rs. 800</span>
-      </div>
-
-      <div class="flex justify-between text-sm mb-1">
-        <span>Cheese Burger</span>
-        <span>Rs. 900</span>
-      </div>
-
-    </div>
-
-    <!-- Divider -->
-    <div class="border-t pt-2 mb-3"></div>
 
     <!-- Total -->
-    <div class="flex justify-between font-bold text-lg">
+    <div class="flex justify-between mt-4 font-bold text-lg">
       <span>Total</span>
-      <span class="text-green-600">Rs. {{ total }}</span>
+      <span>Rs {{ total }}</span>
     </div>
 
     <!-- Buttons -->
-    <div class="flex gap-2 mt-4">
+    <div class="flex justify-end gap-3 mt-6">
 
-      <button class="flex-1 bg-green-600 text-white py-2 rounded-lg" (click)="printBill()">
-        Print
-      </button>
-
-      <button class="flex-1 bg-red-500 text-white py-2 rounded-lg" (click)="close()">
+      <button
+        (click)="close()"
+        class="bg-gray-400 text-white px-4 py-2 rounded">
         Close
       </button>
 
+      <button
+        (click)="printBill()"
+        class="bg-green-500 text-white px-4 py-2 rounded">
+        Print Bill
+      </button>
 
     </div>
 
