@@ -7,11 +7,13 @@ import { OrderPanelComponent } from '../../components/order-panel/order-panel.co
 import { BurgerService } from '../../services/burger.service';
 import { ButtonsService } from '../../services/buttons.service';
 import { BeveragesService } from '../../services/beverages.service';
+import { BillPrintComponent } from '../../components/bill-print/bill-print.component';
+import { CartServiceService } from '../../services/cart-service.service';
 
 
 @Component({
   selector: 'app-burgers',
-  imports: [NavBarComponent, SideBarComponent, SearchBarComponent, CardComponent, OrderPanelComponent],
+  imports: [NavBarComponent, SideBarComponent, SearchBarComponent, CardComponent, OrderPanelComponent, BillPrintComponent],
   templateUrl: './burgers.component.html',
   styleUrl: './burgers.component.css'
 })
@@ -24,9 +26,21 @@ export class BurgersComponent implements OnInit {
   beverages: any[] = [];
 
   selectedCategory: string = 'burgers';
+
   visibleItems: any[] = [];
 
-  constructor(private burgerService: BurgerService, private buttonService: ButtonsService, private beveragesService: BeveragesService) { }
+  showBill = false;
+
+  billData: any;
+
+  cartItems: any[] = [];
+  total: number = 0;
+  // showBill = false;
+
+
+
+  constructor(private burgerService: BurgerService, private buttonService: ButtonsService, private beveragesService: BeveragesService, private cartService: CartServiceService) { }
+
 
   ngOnInit(): void {
     this.burgers = this.burgerService.getBurgers();
@@ -61,6 +75,30 @@ export class BurgersComponent implements OnInit {
       default:
         this.visibleItems = [];
     }
+  }
+
+
+  printBill() {
+    window.print();
+  }
+
+
+  proceedPayment(){
+    this.calculateTotal();
+    this.cartItems = this.cartService.getCartItems();
+  this.total = this.cartService.getTotal();
+
+  if (this.cartItems.length === 0) {
+    alert("Cart is empty");
+    return;
+  }
+
+  this.showBill = true; 
+  }
+
+  calculateTotal(){
+    // temporary sample value
+    this.total = 2500;
   }
 
 }

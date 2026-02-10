@@ -34,9 +34,23 @@
     </div>
 
 
-    <!-- Order Panel -->
     <div class="lg:col-span-3 h-full overflow-auto">
-        <app-order-panel></app-order-panel>
-    </div>
+
+    <app-order-panel 
+        (paymentClick)="proceedPayment()">
+    </app-order-panel>
+
+    @if(showBill){
+      <app-bill-print
+         [cartItems]="cartItems"
+         [total]="total"
+         (closeBill)="showBill = false">
+      </app-bill-print>
+    }
+
+</div>
+
+
+
 
 </body>

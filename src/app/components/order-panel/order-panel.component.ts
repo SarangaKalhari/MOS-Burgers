@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CartServiceService } from '../../services/cart-service.service';
+import { BillPrintComponent } from '../bill-print/bill-print.component';
 
 @Component({
   selector: 'app-order-panel',
@@ -10,6 +11,8 @@ import { CartServiceService } from '../../services/cart-service.service';
 export class OrderPanelComponent implements OnInit{
 
   cartItems: any[] = [];
+
+  @Output() paymentClick = new EventEmitter<void>();
   
   constructor(private cartService: CartServiceService) {}
 
@@ -30,5 +33,12 @@ removeItem(item: any) {
   this.cartService.removeItem(item.id);
 }
 
+
+
+  // constructor(public cartService: CartServiceService){}
+
+  proceedPayment(){
+    this.paymentClick.emit();
+  }
 
 }
