@@ -26,4 +26,9 @@ getTotal(): number {
   );
 }
 
+removeItem(item: any) {
+  this.cartService.removeItem(item.id);
+}
+
+
 }

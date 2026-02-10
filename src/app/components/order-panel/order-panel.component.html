@@ -11,30 +11,37 @@
 
         @if(cartItems.length > 0){
 
-            @for(item of cartItems; track item.id){
+        @for(item of cartItems; track item.id){
 
-                <div class="flex justify-between items-center py-2 border-b">
+        <div class="flex justify-between items-center py-2 border-b">
 
-                    <div>
-                        <p class="font-medium">{{ item.title }}</p>
-                        <p class="text-sm text-gray-500">
-                            Rs {{ item.price }} × {{ item.qty }}
-                        </p>
-                    </div>
+            <img src="{{item.image}}" alt="{{item.id}}" style="width: 60px; height: 55px;">
 
-                    <div class="font-semibold">
-                        Rs {{ item.price * item.qty }}
-                    </div>
+            <div>
+                <p class="font-medium">{{ item.title }}</p>
+                <p class="text-sm text-gray-500">
+                    Rs {{ item.price }} × {{ item.qty }}
+                </p>
+            </div>
 
-                </div>
+            <div class="font-semibold">
+                Rs {{ item.price * item.qty }}
+            </div>
 
-            }
+            <!-- Remove Button -->
+            <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 text-sm" (click)="removeItem(item)">
+                x
+            </button>
+
+        </div>
+
+        }
 
         } @else {
 
-            <p class="text-gray-400 text-center mt-4">
-                No items added
-            </p>
+        <p class="text-gray-400 text-center mt-4">
+            No items added
+        </p>
 
         }
 
@@ -47,8 +54,7 @@
             Total: Rs {{ getTotal() }}
         </h6>
 
-        <button
-            class="bg-yellow-400 hover:bg-yellow-500 w-full mt-2 py-2 rounded font-semibold">
+        <button class="bg-yellow-400 hover:bg-yellow-500 w-full mt-2 py-2 rounded font-semibold">
             Proceed Payment
         </button>
 
