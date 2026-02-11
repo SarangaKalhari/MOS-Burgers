@@ -25,8 +25,8 @@ export class ButtonsService {
     },
     {
       id: 4,
-      name: "Deserts",
-      key: "deserts"
+      name: "Desserts",
+      key: "desserts"
     }
   ]
 

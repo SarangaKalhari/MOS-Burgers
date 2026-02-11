@@ -9,6 +9,7 @@ import { ButtonsService } from '../../services/buttons.service';
 import { BeveragesService } from '../../services/beverages.service';
 import { BillPrintComponent } from '../../components/bill-print/bill-print.component';
 import { CartServiceService } from '../../services/cart-service.service';
+import { DessertsService } from '../../services/desserts.service';
 
 
 @Component({
@@ -25,6 +26,8 @@ export class BurgersComponent implements OnInit {
 
   beverages: any[] = [];
 
+  desserts: any[] = [];
+
   selectedCategory: string = 'burgers';
 
   visibleItems: any[] = [];
@@ -39,7 +42,7 @@ export class BurgersComponent implements OnInit {
 
 
 
-  constructor(private burgerService: BurgerService, private buttonService: ButtonsService, private beveragesService: BeveragesService, private cartService: CartServiceService) { }
+  constructor(private burgerService: BurgerService, private buttonService: ButtonsService, private beveragesService: BeveragesService, private cartService: CartServiceService, private dessertService: DessertsService) { }
 
 
   ngOnInit(): void {
@@ -51,6 +54,9 @@ export class BurgersComponent implements OnInit {
 
     this.beverages = this.beveragesService.getBeverages();
     console.log(this.beverages);
+
+    this.desserts = this.dessertService.getDesserts();
+    console.log(this.desserts)
 
     this.visibleItems = this.burgers;
 
@@ -70,6 +76,10 @@ export class BurgersComponent implements OnInit {
 
       case 'beverages':
         this.visibleItems = this.beverages;
+        break;
+
+      case 'desserts':
+        this.visibleItems = this.desserts;
         break;
 
       default:

@@ -11,6 +11,7 @@ import { CartServiceService } from '../../services/cart-service.service';
 export class CardComponent{
 
   @Input() burger: any;
+  @Input() dessert: any;
 
   constructor(private cartService: CartServiceService){}
 
