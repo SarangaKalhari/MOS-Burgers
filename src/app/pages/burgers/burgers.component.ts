@@ -46,7 +46,9 @@ export class BurgersComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.burgers = this.burgerService.getBurgers();
+    this.burgerService.getBurgers().subscribe(data => {
+      this.burgers =data;
+    });
     console.log(this.burgers);
 
     this.buttons = this.buttonService.getButtons();

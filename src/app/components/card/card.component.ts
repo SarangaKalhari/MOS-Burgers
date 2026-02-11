@@ -8,28 +8,28 @@ import { CartServiceService } from '../../services/cart-service.service';
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
-export class CardComponent{
+export class CardComponent {
 
   @Input() burger: any;
   @Input() dessert: any;
 
-  constructor(private cartService: CartServiceService){}
+  constructor(private cartService: CartServiceService) { }
 
-  
-qty: number = 1;
 
-increaseQty() {
-  this.qty++;
-}
+  qty: number = 1;
 
-decreaseQty() {
-  if (this.qty > 1) {
-    this.qty--;
+  increaseQty() {
+    this.qty++;
   }
-}
+
+  decreaseQty() {
+    if (this.qty > 1) {
+      this.qty--;
+    }
+  }
 
 
-// ✅ Add To Cart Function
+  // ✅ Add To Cart Function
   addToCart() {
 
     const item = {
@@ -44,6 +44,6 @@ decreaseQty() {
   }
 
 
-  
+
 
 }
