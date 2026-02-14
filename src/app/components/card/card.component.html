@@ -1,17 +1,16 @@
 <!-- SMALL CARD -->
 
 
-
-<div class="p-1">
+<div class="p-1 ">
 
     <div class="full-card rounded-lg shadow flex flex-col h-full">
 
-        <img src="{{burger.image}}" alt="{{burger.title}}" class="w-full h-35 object-contain p-2">
+        <img src="{{items.image}}" alt="{{items.title}}" class="w-full h-35 object-contain p-2">
 
         <div class="flex flex-col p-2">
 
             <h6 class="text-center text-sm font-semibold">
-                {{burger.title}}
+                {{items.title}}
             </h6>
 
             <!-- Price + Qty Line -->
@@ -19,7 +18,7 @@
 
                 <!-- Price -->
                 <h6 class="text-sm font-semibold">
-                    Rs. <span>{{burger.price}}</span>
+                    Rs. <span>{{items.price}}</span>
                 </h6>
 
                 <!-- Qty Controls -->
@@ -41,10 +40,13 @@
 
             </div>
 
-            <button class="bg-gray-900 text-white text-sm w-full mt-auto py-1.5 rounded hover:bg-black"
+            <!-- <button class=" bg-gray-500 text-white text-sm w-full mt-auto py-1.5 rounded hover:bg-black"
                 (click)="addToCart()">
                 Add
-            </button>
+            </button> -->
+
+                <button class="bn632-hover bn25" (click)="addToCart()">Add</button>
+
 
         </div>
 

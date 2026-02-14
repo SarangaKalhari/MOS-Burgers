@@ -29,8 +29,8 @@
             </div>
 
             <!-- Remove Button -->
-            <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 text-sm" (click)="removeItem(item)">
-                x
+            <button class="outline-red-600 outline-2  px-2 py-1 rounded hover:bg-red-600 text-sm" (click)="removeItem(item)">
+                X
             </button>
 
         </div>
@@ -54,9 +54,11 @@
             Total: Rs {{ getTotal() }}
         </h6>
 
-        <button class="bg-yellow-400 hover:bg-yellow-500 w-full mt-2 py-2 rounded font-semibold" (click)="proceedPayment()">
+        <!-- <button class="bg-yellow-400 hover:bg-yellow-500 w-full mt-2 py-2 rounded font-semibold" (click)="proceedPayment()">
             Proceed Payment
-        </button>
+        </button> -->
+
+        <button class="bn632-hover bn18 w-full font-semibold" (click)="proceedPayment()">Proceed Payment</button>
 
     </div>
 
