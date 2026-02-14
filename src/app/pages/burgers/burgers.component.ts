@@ -36,6 +36,8 @@ export class BurgersComponent implements OnInit {
 
   billData: any;
 
+  items: any[] = [];
+
   cartItems: any[] = [];
   total: number = 0;
   // showBill = false;
@@ -49,13 +51,17 @@ export class BurgersComponent implements OnInit {
     this.burgerService.getBurgers().subscribe(data => {
       this.burgers =data;
     });
+
     console.log(this.burgers);
 
-    this.buttons = this.buttonService.getButtons();
+    this.buttonService.getButtons().subscribe(data => {
+      this.buttons = data;
+    });
     console.log(this.buttons);
 
-    this.beverages = this.beveragesService.getBeverages();
-    console.log(this.beverages);
+    this.beveragesService.getBeverages().subscribe(data => {
+      this.burgers =data;
+    });
 
     this.desserts = this.dessertService.getDesserts();
     console.log(this.desserts)
