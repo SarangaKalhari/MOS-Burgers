@@ -10,6 +10,7 @@ import { BeveragesService } from '../../services/beverages.service';
 import { BillPrintComponent } from '../../components/bill-print/bill-print.component';
 import { CartServiceService } from '../../services/cart-service.service';
 import { DessertsService } from '../../services/desserts.service';
+import { Burger } from '../../model/Burger.model';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class BurgersComponent implements OnInit {
 
   desserts: any[] = [];
 
-  selectedCategory: string = 'burgers';
+  selectedCategory: string = 'burger';
 
   visibleItems: any[] = [];
 
@@ -49,24 +50,30 @@ export class BurgersComponent implements OnInit {
 
   ngOnInit(): void {
     this.burgerService.getBurgers().subscribe(data => {
-      this.burgers =data;
+      this.burgers = data;
+    this.visibleItems = [...this.burgers];
+      console.log(this.visibleItems);
+
     });
 
-    console.log(this.burgers);
+    // console.log(this.burgers);
+    this.beveragesService.getBeverages().subscribe(data => {
+      this.beverages = data;
+      console.log(this.visibleItems);
+      
+    });
 
     this.buttonService.getButtons().subscribe(data => {
       this.buttons = data;
     });
     console.log(this.buttons);
 
-    this.beveragesService.getBeverages().subscribe(data => {
-      this.burgers =data;
-    });
+
 
     this.desserts = this.dessertService.getDesserts();
     console.log(this.desserts)
 
-    this.visibleItems = this.burgers;
+    // this.visibleItems = this.burgers;
 
     console.log('selectedCategory:', this.selectedCategory);
     console.log('visibleItems:', this.visibleItems);
@@ -75,25 +82,27 @@ export class BurgersComponent implements OnInit {
 
 
   selectCategory(category: string) {
-    this.selectedCategory = category;
 
-    switch (category) {
-      case 'burgers':
-        this.visibleItems = this.burgers;
-        break;
+  this.selectedCategory = category;
 
-      case 'beverages':
-        this.visibleItems = this.beverages;
-        break;
+  switch (category) {
+    case 'burger':
+      this.visibleItems = [...this.burgers];
+      break;
 
-      case 'desserts':
-        this.visibleItems = this.desserts;
-        break;
+    case 'beverages':
+      this.visibleItems = [...this.beverages];
+      break;
 
-      default:
-        this.visibleItems = [];
-    }
+    case 'desserts':
+      this.visibleItems = [...this.desserts];
+      break;
+
+    default:
+      this.visibleItems = [];
   }
+}
+
 
 
   printBill() {
@@ -101,20 +110,20 @@ export class BurgersComponent implements OnInit {
   }
 
 
-  proceedPayment(){
+  proceedPayment() {
     this.calculateTotal();
     this.cartItems = this.cartService.getCartItems();
-  this.total = this.cartService.getTotal();
+    this.total = this.cartService.getTotal();
 
-  if (this.cartItems.length === 0) {
-    alert("Cart is empty");
-    return;
+    if (this.cartItems.length === 0) {
+      alert("Cart is empty");
+      return;
+    }
+
+    this.showBill = true;
   }
 
-  this.showBill = true; 
-  }
-
-  calculateTotal(){
+  calculateTotal() {
     // temporary sample value
     this.total = 2500;
   }

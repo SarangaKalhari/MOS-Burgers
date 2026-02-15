@@ -1,34 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Beverages } from '../model/Beverages.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BeveragesService {
 
-  constructor() { }
+  private bevurl: any = `http://localhost:8080/beverages/all`;
 
-  beverages = [
-    {
-      id: 1,
-      title: 'Single Chicken Burger',
-      image: 'images/beverages/Mango_Juice.png',
-      price: '500.00'
-    },
-    {
-      id: 2,
-      title: 'Bacon Cheese Burger',
-      image: 'images/beverages/Lime_Juice.png',
-      price: '600.00'
-    },
-    {
-      id: 3,
-      title: 'Bacon Beef Burger',
-      image: 'images/beverages/Pineapple_Juice.png',
-      price: '650.00'
-    }
-  ]
+  constructor(private http: HttpClient) { }
 
-  getBeverages(){
-    return this.beverages;
+
+  getBeverages(): Observable<Beverages[]>{
+    return this.http.get<Beverages[]>(this.bevurl);
   }
 }

@@ -10,8 +10,10 @@ import { CartServiceService } from '../../services/cart-service.service';
 })
 export class CardComponent {
 
-  @Input() burger: any;
+  @Input() items: any;
   @Input() dessert: any;
+  // @Input() burger: any;
+  // @Input() beverages: any;
 
   constructor(private cartService: CartServiceService) { }
 
@@ -33,7 +35,7 @@ export class CardComponent {
   addToCart() {
 
     const item = {
-      ...this.burger,
+      ...this.items,
       qty: this.qty
     };
 

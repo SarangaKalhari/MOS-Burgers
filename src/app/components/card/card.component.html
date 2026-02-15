@@ -9,15 +9,15 @@
 
         <div class="flex flex-col p-2">
 
-            <h6 class="text-center text-sm font-semibold">
+            <h4 class="text-center text-sm font-semibold">
                 {{items.title}}
-            </h6>
+            </h4>
 
             <!-- Price + Qty Line -->
             <div class="flex justify-between items-center my-2">
 
                 <!-- Price -->
-                <h6 class="text-sm font-semibold">
+                <h6 class="text-sm text-center font-semibold">
                     Rs. <span>{{items.price}}</span>
                 </h6>
 
@@ -29,7 +29,7 @@
                         −
                     </button>
 
-                    <span class="font-semibold text-sm qty">{{qty}}</span>
+                    <div class="font-semibold text-sm qty">{{qty}}</div>
 
                     <button class="border border-gray-300 px-2 py-0.5 text-sm rounded hover:bg-gray-100"
                         (click)="increaseQty()">
