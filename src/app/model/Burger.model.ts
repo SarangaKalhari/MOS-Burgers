@@ -6,5 +6,6 @@ export interface Burger{
     image: string;
     price: number;
     category: string;
+    stock: number;
     
 }
