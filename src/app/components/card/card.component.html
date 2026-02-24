@@ -51,7 +51,7 @@
                 Add
             </button> -->
 
-                <button class="bn632-hover bn25" (click)="addToCart()">Add</button>
+                <button class="bn632-hover bn25" [disabled]="items.stock === 0" (click)="addToCart(items)">Add</button>
 
 
         </div>
