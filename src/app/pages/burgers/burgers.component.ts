@@ -10,12 +10,12 @@ import { BeveragesService } from '../../services/beverages.service';
 import { BillPrintComponent } from '../../components/bill-print/bill-print.component';
 import { CartServiceService } from '../../services/cart-service.service';
 import { DessertsService } from '../../services/desserts.service';
-import { Burger } from '../../model/Burger.model';
+import { CategoryButtonsComponent } from '../../components/category-buttons/category-buttons.component';
 
 
 @Component({
   selector: 'app-burgers',
-  imports: [NavBarComponent, SideBarComponent, SearchBarComponent, CardComponent, OrderPanelComponent, BillPrintComponent],
+  imports: [NavBarComponent, SideBarComponent, SearchBarComponent, CardComponent, OrderPanelComponent, BillPrintComponent, CategoryButtonsComponent],
   templateUrl: './burgers.component.html',
   styleUrl: './burgers.component.css'
 })
@@ -24,12 +24,14 @@ export class BurgersComponent implements OnInit {
   burgers: any[] = [];
 
   buttons: any[] = [];
+  subCategories: string[] = [];
 
   beverages: any[] = [];
 
   desserts: any[] = [];
 
   selectedCategory: string = 'burger';
+  selectedSubCategory: string = 'chicken';
 
   visibleItems: any[] = [];
 
@@ -51,16 +53,22 @@ export class BurgersComponent implements OnInit {
   ngOnInit(): void {
     this.burgerService.getBurgers().subscribe(data => {
       this.burgers = data;
-    this.visibleItems = [...this.burgers];
-      console.log(this.visibleItems);
+      this.visibleItems = [...this.burgers];
 
+      // 🔥 ADD THIS
+      this.subCategories = [...new Set(this.burgers.map(i => i.subCategory))];
     });
+
+
+    // this.burgerService.getBurgerCategories().subscribe(data => {
+    //   this.subCategories = data;
+    // });
 
     // console.log(this.burgers);
     this.beveragesService.getBeverages().subscribe(data => {
       this.beverages = data;
       console.log(this.visibleItems);
-      
+
     });
 
     this.buttonService.getButtons().subscribe(data => {
@@ -80,28 +88,29 @@ export class BurgersComponent implements OnInit {
 
   }
 
-
   selectCategory(category: string) {
 
-  this.selectedCategory = category;
+    this.selectedCategory = category;
+    this.selectedSubCategory = '';
 
-  switch (category) {
-    case 'burger':
-      this.visibleItems = [...this.burgers];
-      break;
+    let source: any[] = [];
 
-    case 'beverages':
-      this.visibleItems = [...this.beverages];
-      break;
+    switch (category) {
+      case 'burger':
+        source = this.burgers;
+        break;
+      case 'beverages':
+        source = this.beverages;
+        break;
+      case 'desserts':
+        source = this.desserts;
+        break;
+    }
 
-    case 'desserts':
-      this.visibleItems = [...this.desserts];
-      break;
+    this.visibleItems = [...source];
 
-    default:
-      this.visibleItems = [];
+    this.subCategories = [...new Set(source.map(i => i.subCategory))];
   }
-}
 
 
 
@@ -127,5 +136,30 @@ export class BurgersComponent implements OnInit {
     // temporary sample value
     this.total = 2500;
   }
+
+  selectSubCategory(sub: string) {
+
+    this.selectedSubCategory = sub;
+
+    let source: any[] = [];
+
+    switch (this.selectedCategory) {
+      case 'burger':
+        source = this.burgers;
+        break;
+      case 'beverages':
+        source = this.beverages;
+        break;
+      case 'desserts':
+        source = this.desserts;
+        break;
+    }
+
+    this.visibleItems = source.filter(item =>
+      item.subCategory === sub
+    );
+  }
+
+
 
 }
