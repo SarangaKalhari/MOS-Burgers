@@ -19,7 +19,7 @@
             }
         </div>
 
-        @if(subCategories.length > 0){
+        <!-- @if(subCategories.length > 0){
         <div class="flex gap-2 mt-3 overflow-x-auto">
             @for(sub of subCategories; track sub){
             <app-category-buttons [subCategory]="sub" [active]="selectedSubCategory === sub"
@@ -27,6 +27,11 @@
             </app-category-buttons>
             }
         </div>
+        } -->
+        @for(sub of subCategories; track sub){
+        <app-category-buttons [subCategory]="sub" [active]="selectedSubCategory === sub"
+            (subCategoryClick)="selectSubCategory($event)">
+        </app-category-buttons>
         }
 
 

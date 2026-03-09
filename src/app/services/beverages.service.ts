@@ -8,12 +8,16 @@ import { Beverages } from '../model/Beverages.model';
 })
 export class BeveragesService {
 
-  private bevurl: any = `http://localhost:8080/beverages/all`;
+  private bevurl: any = `http://localhost:8080/beverages`;
 
   constructor(private http: HttpClient) { }
 
 
   getBeverages(): Observable<Beverages[]>{
     return this.http.get<Beverages[]>(this.bevurl);
+  }
+
+  getBeveragesSubCategories() {
+    return this.http.get<string[]>('http://localhost:8080/beverages/categories');
   }
 }

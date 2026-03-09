@@ -6,15 +6,38 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './category-buttons.component.html',
   styleUrl: './category-buttons.component.css'
 })
-export class CategoryButtonsComponent{
+export class CategoryButtonsComponent {
 
-@Input() subCategory!: string;
+  // @Input() subCategory!: string;
+  // @Input() active: boolean = false;
+
+  // @Output() subCategoryClick = new EventEmitter<string>();
+
+  // onClick() {
+  //   this.subCategoryClick.emit(this.subCategory);
+  // }
+
+  //  // parent eken ena subcategories
+  // @Input() subCategories: string[] = [];
+
+  // // selected subcategory
+  // @Input() selectedSubCategory: string = '';
+
+  // // parent ekata click event yawanna
+  // @Output() subCategorySelected = new EventEmitter<string>();
+
+
+  // selectSubCategory(sub: string){
+  //   this.subCategorySelected.emit(sub);
+  // }
+
+  @Input() subCategory!: string;
   @Input() active: boolean = false;
 
   @Output() subCategoryClick = new EventEmitter<string>();
 
-onClick() {
-  this.subCategoryClick.emit(this.subCategory);
-}
+  onClick() {
+    this.subCategoryClick.emit(this.subCategory);
+  }
 
 }

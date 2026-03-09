@@ -60,6 +60,10 @@ export class BurgersComponent implements OnInit {
     });
 
 
+    this.burgerService.getBurgerSubCategories().subscribe(data => {
+      this.subCategories = data;
+    });
+
     // this.burgerService.getBurgerCategories().subscribe(data => {
     //   this.subCategories = data;
     // });
@@ -97,11 +101,20 @@ export class BurgersComponent implements OnInit {
 
     switch (category) {
       case 'burger':
+
+        this.burgerService.getBurgerSubCategories().subscribe(data => {
+          this.subCategories = data;   // 🔥 backend eken ena subcategories
+        });
         source = this.burgers;
         break;
+
       case 'beverages':
+        this.beveragesService.getBeveragesSubCategories().subscribe(data => {
+          this.subCategories = data;   // 🔥 backend eken ena subcategories
+        });
         source = this.beverages;
         break;
+
       case 'desserts':
         source = this.desserts;
         break;
@@ -109,7 +122,7 @@ export class BurgersComponent implements OnInit {
 
     this.visibleItems = [...source];
 
-    this.subCategories = [...new Set(source.map(i => i.subCategory))];
+    // this.subCategories = [...new Set(source.map(i => i.subCategory))];
   }
 
 
