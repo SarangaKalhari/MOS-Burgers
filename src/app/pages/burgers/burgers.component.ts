@@ -61,6 +61,11 @@ export class BurgersComponent implements OnInit {
 
       this.burgerService.getBurgerSubCategories().subscribe(data => {
         this.subCategories = data;
+        if (data.length > 0) {
+          this.selectedSubCategory = data[0];
+          this.selectSubCategory(data[0]);
+        }
+
       });
     });
 
@@ -68,7 +73,8 @@ export class BurgersComponent implements OnInit {
     this.beveragesService.getBeverages().subscribe(data => {
       this.beverages = data;
       console.log(this.visibleItems);
-
+      if (data.length > 0) {
+      }
     });
 
     this.buttonService.getButtons().subscribe(data => {
@@ -100,7 +106,7 @@ export class BurgersComponent implements OnInit {
 
         this.burgerService.getBurgerSubCategories().subscribe(data => {
           this.subCategories = data;   // 🔥 backend eken ena subcategories
-          
+
         });
         source = this.burgers;
         break;
@@ -108,7 +114,7 @@ export class BurgersComponent implements OnInit {
       case 'beverages':
         this.beveragesService.getBeveragesSubCategories().subscribe(data => {
           this.subCategories = data;   // 🔥 backend eken ena subcategories
-          
+
         });
         source = this.beverages;
         break;
@@ -147,17 +153,21 @@ export class BurgersComponent implements OnInit {
     this.total = 2500;
   }
 
-  
+
   getChickenBurgers() {
     return this.http.get<any[]>('http://localhost:8080/burger/chicken');
   }
 
-  getBeefBurgers(){
+  getBeefBurgers() {
     return this.http.get<any[]>('http://localhost:8080/burger/beef');
   }
 
-  getVegBurgers(){
+  getVegBurgers() {
     return this.http.get<any[]>('http://localhost:8080/burger/veg');
+  }
+
+  getJuices() {
+    return this.http.get<any[]>('http://localhost:8080/beverages/all/juice');
   }
 
   selectSubCategory(sub: string) {
@@ -170,7 +180,7 @@ export class BurgersComponent implements OnInit {
         this.getChickenBurgers().subscribe(data => {
           console.log(data);
           // console.log("chicken burgers" +data);
-          this.visibleItems=data;
+          this.visibleItems = data;
         });
         break;
       case 'beef':
@@ -183,9 +193,15 @@ export class BurgersComponent implements OnInit {
       case 'veg':
         this.getVegBurgers().subscribe(data => {
           console.log(data);
-          this.visibleItems=data;
+          this.visibleItems = data;
         });
         break;
+      case 'juice':
+        this.getJuices().subscribe(data => {
+          console.log(data);
+          this.visibleItems = data;
+
+        })
     }
   }
 
