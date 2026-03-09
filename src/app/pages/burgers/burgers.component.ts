@@ -11,6 +11,7 @@ import { BillPrintComponent } from '../../components/bill-print/bill-print.compo
 import { CartServiceService } from '../../services/cart-service.service';
 import { DessertsService } from '../../services/desserts.service';
 import { CategoryButtonsComponent } from '../../components/category-buttons/category-buttons.component';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -30,6 +31,8 @@ export class BurgersComponent implements OnInit {
 
   desserts: any[] = [];
 
+  chickenBurgers: any[] = [];
+
   selectedCategory: string = 'burger';
   selectedSubCategory: string = 'chicken';
 
@@ -47,7 +50,7 @@ export class BurgersComponent implements OnInit {
 
 
 
-  constructor(private burgerService: BurgerService, private buttonService: ButtonsService, private beveragesService: BeveragesService, private cartService: CartServiceService, private dessertService: DessertsService) { }
+  constructor(private burgerService: BurgerService, private buttonService: ButtonsService, private beveragesService: BeveragesService, private cartService: CartServiceService, private dessertService: DessertsService, private http: HttpClient) { }
 
 
   ngOnInit(): void {
@@ -55,20 +58,13 @@ export class BurgersComponent implements OnInit {
       this.burgers = data;
       this.visibleItems = [...this.burgers];
 
-      // 🔥 ADD THIS
-      this.subCategories = [...new Set(this.burgers.map(i => i.subCategory))];
+
+      this.burgerService.getBurgerSubCategories().subscribe(data => {
+        this.subCategories = data;
+      });
     });
 
 
-    this.burgerService.getBurgerSubCategories().subscribe(data => {
-      this.subCategories = data;
-    });
-
-    // this.burgerService.getBurgerCategories().subscribe(data => {
-    //   this.subCategories = data;
-    // });
-
-    // console.log(this.burgers);
     this.beveragesService.getBeverages().subscribe(data => {
       this.beverages = data;
       console.log(this.visibleItems);
@@ -104,6 +100,7 @@ export class BurgersComponent implements OnInit {
 
         this.burgerService.getBurgerSubCategories().subscribe(data => {
           this.subCategories = data;   // 🔥 backend eken ena subcategories
+          
         });
         source = this.burgers;
         break;
@@ -111,6 +108,7 @@ export class BurgersComponent implements OnInit {
       case 'beverages':
         this.beveragesService.getBeveragesSubCategories().subscribe(data => {
           this.subCategories = data;   // 🔥 backend eken ena subcategories
+          
         });
         source = this.beverages;
         break;
@@ -122,7 +120,6 @@ export class BurgersComponent implements OnInit {
 
     this.visibleItems = [...source];
 
-    // this.subCategories = [...new Set(source.map(i => i.subCategory))];
   }
 
 
@@ -150,29 +147,46 @@ export class BurgersComponent implements OnInit {
     this.total = 2500;
   }
 
+  
+  getChickenBurgers() {
+    return this.http.get<any[]>('http://localhost:8080/burger/chicken');
+  }
+
+  getBeefBurgers(){
+    return this.http.get<any[]>('http://localhost:8080/burger/beef');
+  }
+
+  getVegBurgers(){
+    return this.http.get<any[]>('http://localhost:8080/burger/veg');
+  }
+
   selectSubCategory(sub: string) {
 
-    this.selectedSubCategory = sub;
 
     let source: any[] = [];
 
-    switch (this.selectedCategory) {
-      case 'burger':
-        source = this.burgers;
+    switch (sub) {
+      case 'chicken':
+        this.getChickenBurgers().subscribe(data => {
+          console.log(data);
+          // console.log("chicken burgers" +data);
+          this.visibleItems=data;
+        });
         break;
-      case 'beverages':
-        source = this.beverages;
+      case 'beef':
+        this.getBeefBurgers().subscribe(data => {
+          console.log(data);
+          // console.log("chicken burgers" +data);
+          this.visibleItems = data;
+        });
         break;
-      case 'desserts':
-        source = this.desserts;
+      case 'veg':
+        this.getVegBurgers().subscribe(data => {
+          console.log(data);
+          this.visibleItems=data;
+        });
         break;
     }
-
-    this.visibleItems = source.filter(item =>
-      item.subCategory === sub
-    );
   }
-
-
 
 }
