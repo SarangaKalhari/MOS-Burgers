@@ -1,59 +1,36 @@
-# Demo
+🍔 MOS Burger POS System – Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+A modern Point of Sale (POS) frontend application inspired by the MOS Burger restaurant ordering system.
+This application allows restaurant staff to browse menu items by category and subcategory, add items to the cart, and generate bills efficiently.
 
-## Development server
+The system is designed to provide a fast and user-friendly ordering experience for restaurant environments.
 
-To start a local development server, run:
+🚀 Features
 
-```bash
-ng serve
-```
+🍔 View products by category and subcategory
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+🔎 Search menu items
 
-## Code scaffolding
+🛒 Add items to cart
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+🧾 Generate order bill
 
-```bash
-ng generate component component-name
-```
+📂 Dynamic category and subcategory filtering
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+⚡ Real-time UI updates
 
-```bash
-ng generate --help
-```
+📱 Responsive POS style interface
 
-## Building
+🛠️ Technologies Used
 
-To build the project run:
+Angular 19
 
-```bash
-ng build
-```
+TypeScript
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Tailwind CSS
 
-## Running unit tests
+REST API Integration
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+HTML5 & CSS3
 
-```bash
-ng test
-```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
