@@ -1,36 +1,48 @@
-🍔 MOS Burger POS System – Frontend
+# 🍔 MOS Burger POS System – Frontend
 
 A modern Point of Sale (POS) frontend application inspired by the MOS Burger restaurant ordering system.
 This application allows restaurant staff to browse menu items by category and subcategory, add items to the cart, and generate bills efficiently.
 
 The system is designed to provide a fast and user-friendly ordering experience for restaurant environments.
 
-🚀 Features
+## 🚀 Features
 
-🍔 View products by category and subcategory
+- 🍔 View products by category and subcategory
 
-🔎 Search menu items
+- 🔎 Search menu items
 
-🛒 Add items to cart
+- 🛒 Add items to cart
 
-🧾 Generate order bill
+- 🧾 Generate order bill
 
-📂 Dynamic category and subcategory filtering
+- 📂 Dynamic category and subcategory filtering
 
-⚡ Real-time UI updates
+- ⚡ Real-time UI updates
 
-📱 Responsive POS style interface
+- 📱 Responsive POS style interface
 
-🛠️ Technologies Used
+## 🛠️ Technologies Used
 
-Angular 19
+- Angular 19
 
-TypeScript
+- TypeScript
 
-Tailwind CSS
+- Tailwind CSS
 
-REST API Integration
+- REST API Integration
 
-HTML5 & CSS3
+- HTML5 & CSS3
+
+## 🔗 Backend API
+
+This frontend communicates with a Spring Boot REST API backend to retrieve:
+
+- Menu items
+
+- Categories
+
+- Subcategories
+
+- Orders
 
 
