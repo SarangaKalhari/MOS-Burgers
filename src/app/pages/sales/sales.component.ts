@@ -15,7 +15,7 @@ import { OrdersCardComponent } from '../../components/orders-card/orders-card.co
 export class SalesComponent {
 
 
-  times: string[] = ["Daily", "Weekly", "Monthly"];
+  times: string[] = ["Daily", "Weekly", "Monthly", "Total"];
 
   selectedTime: string = "Daily";
 
@@ -73,6 +73,19 @@ export class SalesComponent {
       });
 
       this.salesService.getMonthlyOrders().subscribe(data => {
+        this.orders = data;
+        console.log(this.orders);
+        console.log(data);        
+      })
+    }
+
+    if (this.selectedTime === "Total") {
+      this.salesService.getTotalRevenue().subscribe(res => {
+        this.revenue = res;
+        console.log(this.revenue);
+      });
+
+      this.salesService.getTotalOrders().subscribe(data => {
         this.orders = data;
         console.log(this.orders);
         console.log(data);        

@@ -8,6 +8,7 @@ export class SalesService {
 
   constructor(private http: HttpClient) { }
 
+  // get revenues
   getDailyRevenue() {
     return this.http.get<number>("http://localhost:8080/order/revenue/daily");
   }
@@ -20,6 +21,13 @@ export class SalesService {
     return this.http.get<number>("http://localhost:8080/order/revenue/monthly");
   }
 
+  getTotalRevenue() {
+    return this.http.get<number>("http://localhost:8080/order/revenue/total");
+  }
+
+
+
+  // get orders
   getDailyOrders(){
     return this.http.get<number>("http://localhost:8080/order/orders/daily");
   }
@@ -30,5 +38,9 @@ export class SalesService {
 
   getMonthlyOrders(){
     return this.http.get<number>("http://localhost:8080/order/orders/monthly");
+  }
+
+  getTotalOrders(){
+    return this.http.get<number>("http://localhost:8080/order/orders/total");
   }
 }
