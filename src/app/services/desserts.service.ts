@@ -48,19 +48,19 @@ export class DessertsService {
     {
       id: 7,
       title: 'Cheese Double Beef Burger',
-      image: 'images/cheese double beef burger.png',
+      image: 'images/desserts/berry gelato.jpg',
       price: '750.00'
     },
     {
       id: 8,
       title: 'Cheese Veg Burger',
-      image: 'images/cheese_veg_burger.png',
+      image: 'images/desserts/mango gelato.jpg',
       price: '500.00'
     },
     {
       id: 9,
       title: 'Chinese Beef Burger',
-      image: 'images/cheneese beef burger.png',
+      image: 'images/desserts/chocolate gelatos.jpg',
       price: '550.00'
     },
     {
