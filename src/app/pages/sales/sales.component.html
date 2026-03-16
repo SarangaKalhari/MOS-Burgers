@@ -11,7 +11,12 @@
         @for(t of times; track t){
         <app-time-btn [time]="t" [active]="selectedTime === t" (timeClick)="selectTime($event)">
         </app-time-btn>
+
         }
+
+        <div class="col-span-11 grid-cols-2 gap-2">
+            <app-revenue-card  [selectedTime]="selectedTime" [revenue]="revenue"></app-revenue-card>
+        </div>
 
     </div>
 
