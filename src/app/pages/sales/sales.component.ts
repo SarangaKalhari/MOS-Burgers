@@ -71,6 +71,12 @@ export class SalesComponent {
         this.revenue = res;
         console.log(this.revenue);
       });
+
+      this.salesService.getMonthlyOrders().subscribe(data => {
+        this.orders = data;
+        console.log(this.orders);
+        console.log(data);        
+      })
     }
 
   }

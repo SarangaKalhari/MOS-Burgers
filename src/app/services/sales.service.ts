@@ -27,4 +27,8 @@ export class SalesService {
   getWeeklyOrders(){
     return this.http.get<number>("http://localhost:8080/order/orders/weekly");
   }
+
+  getMonthlyOrders(){
+    return this.http.get<number>("http://localhost:8080/order/orders/monthly");
+  }
 }
