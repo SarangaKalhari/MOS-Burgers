@@ -4,10 +4,11 @@ import { CategoryButtonsComponent } from '../../components/category-buttons/cate
 import { TimeBtnComponent } from "../../components/time-btn/time-btn.component";
 import { SalesService } from '../../services/sales.service';
 import { RevenueCardComponent } from "../../components/revenue-card/revenue-card.component";
+import { OrdersCardComponent } from '../../components/orders-card/orders-card.component';
 
 @Component({
   selector: 'app-sales',
-  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent],
+  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent, OrdersCardComponent],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css'
 })
@@ -17,6 +18,10 @@ export class SalesComponent {
   times: string[] = ["Daily", "Weekly", "Monthly"];
 
   selectedTime: string = "Daily";
+
+  total: number = 0;
+
+  orders: number = 0;
 
   ngOnInit(): void { }
 
@@ -38,6 +43,14 @@ export class SalesComponent {
         console.log(this.revenue);
         
       });
+
+      this.salesService.getDailyOrders().subscribe(data => {
+        this.orders = data;
+        console.log(this.orders);
+        console.log(data);
+        
+        
+      })
     }
 
     if (this.selectedTime === "Weekly") {
