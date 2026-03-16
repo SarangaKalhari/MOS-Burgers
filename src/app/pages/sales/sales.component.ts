@@ -40,6 +40,20 @@ export class SalesComponent {
       });
     }
 
+    if (this.selectedTime === "Weekly") {
+      this.salesService.getWeeklyRevenue().subscribe(res => {
+        this.revenue = res;
+        console.log(this.revenue);
+      });
+    }
+
+    if (this.selectedTime === "Monthly") {
+      this.salesService.getMonthlyRevenue().subscribe(res => {
+        this.revenue = res;
+        console.log(this.revenue);
+      });
+    }
+
   }
 
 }
