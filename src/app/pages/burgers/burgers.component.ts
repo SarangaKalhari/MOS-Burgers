@@ -84,8 +84,11 @@ export class BurgersComponent implements OnInit {
 
 
 
-    this.desserts = this.dessertService.getDesserts();
-    console.log(this.desserts)
+    this.dessertService.getDesserts().subscribe(data => {
+      this.desserts = data;
+    })
+    console.log(this.desserts);
+    
 
     // this.visibleItems = this.burgers;
 
@@ -120,6 +123,9 @@ export class BurgersComponent implements OnInit {
         break;
 
       case 'desserts':
+        this.dessertService.getDessertCategories().subscribe(data => {
+          this.subCategories =data;
+        })
         source = this.desserts;
         break;
     }
