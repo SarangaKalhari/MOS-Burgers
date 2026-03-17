@@ -1,22 +1,42 @@
-<body class="bg-gray-100 font-sans grid grid-cols-1 lg:grid-cols-12 md:grid-cols-12 sm:grid-cols-12 h-screen">
+<body class="bg-gray-100 font-sans grid grid-cols-12 h-screen">
 
     <!-- Sidebar -->
-    <div class=" lg:col-span-1 h-screen md:col-span-1 sm:col-span-1">
+    <div class="col-span-1 h-screen">
         <app-side-bar></app-side-bar>
     </div>
 
-    <!-- Time Buttons -->
+    <!-- Main Content -->
     <div class="col-span-11 p-4 grid grid-cols-11 gap-4">
 
+        <!-- Time Buttons -->
         @for(t of times; track t){
-        <app-time-btn [time]="t" [active]="selectedTime === t" (timeClick)="selectTime($event)">
+        <app-time-btn
+            [time]="t"
+            [active]="selectedTime === t"
+            (timeClick)="selectTime($event)">
         </app-time-btn>
-
         }
 
-        <div class="col-span-11 grid-cols-2 gap-2">
-            <app-revenue-card  [selectedTime]="selectedTime" [revenue]="revenue"></app-revenue-card>
-            <app-orders-card [selectedTime]="selectedTime" [orders]="orders"></app-orders-card>
+        <!-- Cards (Buttons walata passe yatin) -->
+        <div class="col-span-11 grid grid-cols-3 gap-4 mt-1">
+
+            <app-revenue-card
+                [selectedTime]="selectedTime"
+                [revenue]="revenue">
+            </app-revenue-card>
+
+            <app-orders-card
+                [selectedTime]="selectedTime"
+                [orders]="orders">
+            </app-orders-card>
+
+            <app-top-item-card
+                [selectedTime]="selectedTime"
+                [item]="item"
+            >
+
+            </app-top-item-card>
+
         </div>
 
     </div>

@@ -5,10 +5,13 @@ import { TimeBtnComponent } from "../../components/time-btn/time-btn.component";
 import { SalesService } from '../../services/sales.service';
 import { RevenueCardComponent } from "../../components/revenue-card/revenue-card.component";
 import { OrdersCardComponent } from '../../components/orders-card/orders-card.component';
+import { TopItemCardComponent } from "../../components/top-item-card/top-item-card.component";
+import { OrderService } from '../../services/order.service';
+import { OrderItems } from '../../model/OrderItems.model';
 
 @Component({
   selector: 'app-sales',
-  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent, OrdersCardComponent],
+  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent, OrdersCardComponent, TopItemCardComponent],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css'
 })
@@ -23,9 +26,11 @@ export class SalesComponent {
 
   orders: number = 0;
 
+  item: any = "";
+
   ngOnInit(): void { }
 
-  constructor(private salesService: SalesService) { }
+  constructor(private salesService: SalesService, private orderService: OrderService) { }
 
   selectTime(time: string) {
     this.selectedTime = time;
@@ -49,6 +54,12 @@ export class SalesComponent {
         console.log(this.orders);
         console.log(data);
         
+      })
+
+      this.orderService.getDailyTopItem().subscribe(data => {
+        this.item =data;
+        console.log(this.item);
+        console.log(data);
         
       })
     }
