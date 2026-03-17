@@ -8,10 +8,11 @@ import { OrdersCardComponent } from '../../components/orders-card/orders-card.co
 import { TopItemCardComponent } from "../../components/top-item-card/top-item-card.component";
 import { OrderService } from '../../services/order.service';
 import { OrderItems } from '../../model/OrderItems.model';
+import { ProductListComponent } from "../../components/product-list/product-list.component";
 
 @Component({
   selector: 'app-sales',
-  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent, OrdersCardComponent, TopItemCardComponent],
+  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent, OrdersCardComponent, TopItemCardComponent, ProductListComponent],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css'
 })
@@ -74,6 +75,13 @@ export class SalesComponent {
         this.orders = data;
         console.log(this.orders);
         console.log(data);        
+      })
+
+      this.orderService.getWeeklyTopItem().subscribe(data => {
+        this.item =data;
+        console.log(this.item);
+        console.log(data);
+        
       })
     }
 

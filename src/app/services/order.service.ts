@@ -26,4 +26,8 @@ export class OrderService {
   getDailyTopItem(){
     return this.http.get<any>("http://localhost:8080/order-item/top-1/daily");
   }
+
+  getWeeklyTopItem(){
+    return this.http.get<any>("http://localhost:8080/order-item/top-1/weekly");
+  }
 }
