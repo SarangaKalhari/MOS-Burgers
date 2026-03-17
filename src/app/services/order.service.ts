@@ -30,4 +30,13 @@ export class OrderService {
   getWeeklyTopItem(){
     return this.http.get<any>("http://localhost:8080/order-item/top-1/weekly");
   }
+
+  getMonthlyTopItem(){
+    return this.http.get<any>("http://localhost:8080/order-item/top-1/monthly");
+  }
+
+  getTotalyTopItem(){
+    return this.http.get<any>("http://localhost:8080/order-item/top-1/total");
+  }
+
 }

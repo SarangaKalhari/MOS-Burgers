@@ -29,7 +29,27 @@ export class SalesComponent {
 
   item: any = "";
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.salesService.getDailyRevenue().subscribe(res => {
+        this.revenue = res;
+        console.log(this.revenue);
+        
+      });
+
+      this.salesService.getDailyOrders().subscribe(data => {
+        this.orders = data;
+        console.log(this.orders);
+        console.log(data);
+        
+      })
+
+      this.orderService.getDailyTopItem().subscribe(data => {
+        this.item =data;
+        console.log(this.item);
+        console.log(data);
+        
+      })
+  }
 
   constructor(private salesService: SalesService, private orderService: OrderService) { }
 
@@ -96,6 +116,13 @@ export class SalesComponent {
         console.log(this.orders);
         console.log(data);        
       })
+
+      this.orderService.getMonthlyTopItem().subscribe(data => {
+        this.item =data;
+        console.log(this.item);
+        console.log(data);
+        
+      })
     }
 
     if (this.selectedTime === "Total") {
@@ -108,6 +135,13 @@ export class SalesComponent {
         this.orders = data;
         console.log(this.orders);
         console.log(data);        
+      })
+
+      this.orderService.getTotalyTopItem().subscribe(data => {
+        this.item =data;
+        console.log(this.item);
+        console.log(data);
+        
       })
     }
 
