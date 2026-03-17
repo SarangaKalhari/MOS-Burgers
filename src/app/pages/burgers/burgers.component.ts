@@ -12,6 +12,7 @@ import { CartServiceService } from '../../services/cart-service.service';
 import { DessertsService } from '../../services/desserts.service';
 import { CategoryButtonsComponent } from '../../components/category-buttons/category-buttons.component';
 import { HttpClient } from '@angular/common/http';
+import { Item } from '../../model/item.model';
 
 
 @Component({
@@ -22,27 +23,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BurgersComponent implements OnInit {
 
-  burgers: any[] = [];
+  burgers: Item[] = [];
 
   buttons: any[] = [];
   subCategories: string[] = [];
 
-  beverages: any[] = [];
+  beverages: Item[] = [];
 
-  desserts: any[] = [];
+  desserts: Item[] = [];
 
   chickenBurgers: any[] = [];
 
   selectedCategory: string = 'burger';
   selectedSubCategory: string = 'chicken';
 
-  visibleItems: any[] = [];
+  visibleItems: Item[] = [];
 
   showBill = false;
 
   billData: any;
 
-  items: any[] = [];
+  items: Item[] = [];
 
   cartItems: any[] = [];
   total: number = 0;

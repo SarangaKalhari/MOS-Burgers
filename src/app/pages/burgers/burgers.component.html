@@ -41,7 +41,7 @@
         <!-- Card Section -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 mt-4 overflow-auto">
             @if (visibleItems.length > 0) {
-            @for (items of visibleItems; track items.id) {
+            @for (items of visibleItems; track $index) {
             <app-card [items]="items"></app-card>
             }
             } @else {

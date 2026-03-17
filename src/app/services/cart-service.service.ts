@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Item } from '../model/item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class CartServiceService {
   addToCart(item: any) {
 
     const existingItem = this.cartItems.find(
-      cartItem => cartItem.id === item.id
+      cartItem => cartItem.code === item.code
     );
 
     if (existingItem) {

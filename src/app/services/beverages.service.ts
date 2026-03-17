@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Beverages } from '../model/Beverages.model';
+import { Item } from '../model/item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class BeveragesService {
 
 
   getBeverages(): Observable<Beverages[]>{
-    return this.http.get<Beverages[]>(this.bevurl);
+    return this.http.get<Item[]>(this.bevurl);
   }
 
   getBeveragesSubCategories() {

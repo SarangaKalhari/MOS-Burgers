@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Item } from '../model/item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class DessertsService {
 
 
   getDesserts(){
-    return this.http.get<any[]>('http://localhost:8080/dessert');
+    return this.http.get<Item[]>('http://localhost:8080/dessert');
   }
 
   getDessertCategories(){

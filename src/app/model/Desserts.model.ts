@@ -1,4 +1,4 @@
-export interface Beverages{
+export interface Desserts{
 
     id: number;
     code: string;
@@ -7,4 +7,5 @@ export interface Beverages{
     price: number;
     category: string;
     stock: number;
+    
 }

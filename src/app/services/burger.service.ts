@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Item } from '../model/item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class BurgerService {
 
   getBurgers() {
     // return this.burgers;
-    return this.http.get<any[]>(this.url)
+    return this.http.get<Item[]>(this.url)
   }
 
   getBurgerSubCategories() {
