@@ -12,7 +12,7 @@ import { CartServiceService } from '../../services/cart-service.service';
 import { DessertsService } from '../../services/desserts.service';
 import { CategoryButtonsComponent } from '../../components/category-buttons/category-buttons.component';
 import { HttpClient } from '@angular/common/http';
-import { Item } from '../../model/item.model';
+import { Item } from '../../model/Item.model';
 
 
 @Component({
@@ -87,9 +87,10 @@ export class BurgersComponent implements OnInit {
 
     this.dessertService.getDesserts().subscribe(data => {
       this.desserts = data;
+      // this.visibleItems = data;
     })
     console.log(this.desserts);
-    
+
 
     // this.visibleItems = this.burgers;
 
@@ -125,7 +126,7 @@ export class BurgersComponent implements OnInit {
 
       case 'desserts':
         this.dessertService.getDessertCategories().subscribe(data => {
-          this.subCategories =data;
+          this.subCategories = data;
         })
         source = this.desserts;
         break;
@@ -177,8 +178,15 @@ export class BurgersComponent implements OnInit {
     return this.http.get<any[]>('http://localhost:8080/beverages/all/juice');
   }
 
-  selectSubCategory(sub: string) {
+  getIceCream() {
+    return this.http.get<any[]>('http://localhost:8080/dessert/ice%20cream');
+  }
 
+  getGelato(){
+    return this.http.get<any[]>('http://localhost:8080/dessert/gelato');
+  }
+
+  selectSubCategory(sub: string) {
 
     let source: any[] = [];
 
@@ -208,7 +216,21 @@ export class BurgersComponent implements OnInit {
           console.log(data);
           this.visibleItems = data;
 
-        })
+        });
+        break;
+      case 'Ice Cream':
+        this.getIceCream().subscribe(data => {
+          
+          this.visibleItems = data;
+          console.log(data);
+        });
+        break;
+      case 'Gelato':
+        this.getGelato().subscribe(data => {
+          
+          this.visibleItems = data;
+          console.log(data);
+        });
     }
   }
 

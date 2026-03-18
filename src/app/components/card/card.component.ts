@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { BurgerService } from '../../services/burger.service';
 import { CartServiceService } from '../../services/cart-service.service';
-import { Item } from '../../model/item.model';
+import { Item } from '../../model/Item.model';
+
 
 @Component({
   selector: 'app-card',
