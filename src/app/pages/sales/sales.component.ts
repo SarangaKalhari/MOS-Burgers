@@ -9,10 +9,11 @@ import { TopItemCardComponent } from "../../components/top-item-card/top-item-ca
 import { OrderService } from '../../services/order.service';
 import { OrderItems } from '../../model/OrderItems.model';
 import { ProductListComponent } from "../../components/product-list/product-list.component";
+import { TopProductsComponent } from "../../components/top-products/top-products.component";
 
 @Component({
   selector: 'app-sales',
-  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent, OrdersCardComponent, TopItemCardComponent, ProductListComponent],
+  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent, OrdersCardComponent, TopItemCardComponent, ProductListComponent, TopProductsComponent],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css'
 })
@@ -75,12 +76,16 @@ export class SalesComponent {
         console.log(this.orders);
         console.log(data);
         
-      })
+      });
 
       this.orderService.getDailyTopItem().subscribe(data => {
         this.item =data;
         console.log(this.item);
         console.log(data);
+        
+      });
+
+      this.salesService.getDailyTopProducts().subscribe(data => {
         
       })
     }

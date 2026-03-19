@@ -6,40 +6,35 @@
     </div>
 
     <!-- Main Content -->
-    <div class="col-span-11 p-4 grid grid-cols-11 gap-4">
+    <div class="col-span-11 p-4 grid grid-rows-[auto_auto_1fr] gap-4">
 
         <!-- Time Buttons -->
-        @for(t of times; track t){
-        <app-time-btn
-            [time]="t"
-            [active]="selectedTime === t"
-            (timeClick)="selectTime($event)">
-        </app-time-btn>
-        }
-
-        <!-- Cards (Buttons walata passe yatin) -->
-        <div class="col-span-11 grid grid-cols-3 gap-4 mt-1">
-
-            <app-revenue-card
-                [selectedTime]="selectedTime"
-                [revenue]="revenue">
-            </app-revenue-card>
-
-            <app-orders-card
-                [selectedTime]="selectedTime"
-                [orders]="orders">
-            </app-orders-card>
-
-            <app-top-item-card
-                [selectedTime]="selectedTime"
-                [item]="item"
-            >
-
-            </app-top-item-card>
-
+        <div class="flex gap-3 flex-wrap">
+            @for(t of times; track t){
+            <app-time-btn [time]="t" [active]="selectedTime === t" (timeClick)="selectTime($event)">
+            </app-time-btn>
+            }
         </div>
 
+        <!-- Cards -->
+        <div class="grid grid-cols-3 gap-4">
+            <app-revenue-card [selectedTime]="selectedTime" [revenue]="revenue">
+            </app-revenue-card>
+
+            <app-orders-card [selectedTime]="selectedTime" [orders]="orders">
+            </app-orders-card>
+
+            <app-top-item-card [selectedTime]="selectedTime" [item]="item">
+            </app-top-item-card>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4">
+
+            <app-top-products [selectedTime]="selectedTime"></app-top-products>
+        </div>
+        <!-- Product List -->
         <app-product-list></app-product-list>
+
 
     </div>
 

@@ -43,4 +43,8 @@ export class SalesService {
   getTotalOrders(){
     return this.http.get<number>("http://localhost:8080/order/orders/total");
   }
+
+  getDailyTopProducts() {
+    return this.http.get<any[]>("http://localhost:8080/order-item/top/daily");
+  }
 }
