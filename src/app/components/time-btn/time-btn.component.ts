@@ -15,8 +15,11 @@ export class TimeBtnComponent {
 
   @Output() timeClick = new EventEmitter<string>();
 
+
   onClick(){
-    this.timeClick.emit(this.time);    
+    this.timeClick.emit(this.time); 
+    this.active = true;   
   }
   
+
 }
