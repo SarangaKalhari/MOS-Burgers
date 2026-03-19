@@ -43,6 +43,11 @@ export class TopProductsComponent implements OnInit, OnChanges {
       .subscribe(data => this.products = data);
   }
 
+  getBestProducts() {
+    this.http.get<any[]>('http://localhost:8080/order-item/top/total')
+      .subscribe(data => this.products = data);
+  }
+
   loadTopItems(selectedTime: string){
     switch(selectedTime){
       case 'Daily':
@@ -55,6 +60,10 @@ export class TopProductsComponent implements OnInit, OnChanges {
 
       case 'Monthly':
         this.getMonthlyTopProducts();
+        break;
+
+      case 'Total':
+        this.getBestProducts();
         break;
 
       default:
