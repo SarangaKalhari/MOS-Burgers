@@ -10,10 +10,11 @@ import { OrderService } from '../../services/order.service';
 import { OrderItems } from '../../model/OrderItems.model';
 import { ProductListComponent } from "../../components/product-list/product-list.component";
 import { TopProductsComponent } from "../../components/top-products/top-products.component";
+import { ChartComponent } from "../../components/chart/chart.component";
 
 @Component({
   selector: 'app-sales',
-  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent, OrdersCardComponent, TopItemCardComponent, ProductListComponent, TopProductsComponent],
+  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent, OrdersCardComponent, TopItemCardComponent, ProductListComponent, TopProductsComponent, ChartComponent],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css'
 })

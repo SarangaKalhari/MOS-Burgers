@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CartServiceService } from '../../services/cart-service.service';
 import { Item } from '../../model/Item.model';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-card',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })

@@ -18,11 +18,10 @@
 
                 <!-- Price -->
                 <h6 class="text-sm text-center font-semibold">
-                    Rs. <span>{{items.price}}</span>
-                </h6>
+                    Rs. <span>{{ items.price | number:'1.2-2' }}</span> </h6>
 
-                 <h6>{{items.stock}}</h6>
-                 
+                <h6>{{items.stock}}</h6>
+
                 <!-- Qty Controls -->
                 <div class="flex items-center gap-1">
 
@@ -38,20 +37,20 @@
                         +
                     </button>
 
-                    
+
 
                 </div>
 
             </div>
 
-           
+
 
             <!-- <button class=" bg-gray-500 text-white text-sm w-full mt-auto py-1.5 rounded hover:bg-black"
                 (click)="addToCart()">
                 Add
             </button> -->
 
-                <button class="bn632-hover bn25" [disabled]="items.stock === 0" (click)="addToCart(items)">Add</button>
+            <button class="bn632-hover bn25" [disabled]="items.stock === 0" (click)="addToCart(items)">Add</button>
 
 
         </div>
