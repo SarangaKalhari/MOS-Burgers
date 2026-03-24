@@ -1,4 +1,57 @@
 
+
+
+/* From Uiverse.io by kamehame-ha 
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cards .red {
+  background-color: #f43f5e;
+}
+
+.cards .blue {
+  background-color: #3b82f6;
+}
+
+.cards .green {
+  background-color: #22c55e;
+}
+
+.cards .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100px;
+  width: 250px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.cards .card p.tip {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.cards .card p.second-text {
+  font-size: .7em;
+}
+
+.cards .card:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.cards:hover > .card:not(:hover) {
+  filter: blur(10px);
+  transform: scale(0.9, 0.9);
+} */
+
 /* From Uiverse.io by lucas_5777 */ 
 .card {
   padding: 1.5rem;
@@ -29,11 +82,11 @@
 .title span {
   position: relative;
   padding: 0.6rem;
-  background: linear-gradient(135deg, #FF5A5A, #FF5A5A);
+  background: linear-gradient(135deg, #b193cf, #9f7cc2);
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
-  box-shadow: 0 3px 8px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 3px 8px #86269e;
   animation: pulse 2.4s ease-in-out infinite;
 }
 
@@ -56,7 +109,7 @@
 
 .percent {
   margin-left: 0.5rem;
-  color: #FF5A5A;
+  color: #86269e;
   font-weight: 600;
   display: flex;
   font-size: 15px;
@@ -94,7 +147,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(90deg, #e06262, #ec6363);
+  background: linear-gradient(90deg, #b193cf, #9f7cc2);
   width: 0%;
   height: 100%;
   border-radius: inherit;
@@ -150,10 +203,10 @@
   0%,
   100% {
     transform: scale(1);
-    box-shadow: 0 3px 8px #FF5A5A;
+    box-shadow: 0 3px 8px rgba(151, 44, 197, 0.35);
   }
   50% {
     transform: scale(1.08);
-    box-shadow: 0 6px 14px #FF5A5A;
+    box-shadow: 0 6px 14px rgba(171, 16, 185, 0.45);
   }
 }
