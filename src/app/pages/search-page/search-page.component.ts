@@ -68,5 +68,18 @@ export class SearchPageComponent implements OnInit {
     this.visibleItems = [...this.allItems]; // Default show all items
   }
 
-  
+  onSearch(text: string) {
+    this.searchSubject.next(text);  // Trigger search by emitting search text
+  }
+
+  filterItems(text: string) {
+    const value = text.toLowerCase();
+
+    // Filter items based on search text
+    this.visibleItems = this.allItems.filter(item =>
+      item.title.toLowerCase().includes(value)
+    );
+
+    console.log("Filtered items: ", this.visibleItems);
+  }
 }
