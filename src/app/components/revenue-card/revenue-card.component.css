@@ -83,7 +83,7 @@
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
-  box-shadow: 0 3px 8px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 3px 8px #86269e;
   animation: pulse 2.4s ease-in-out infinite;
 }
 
@@ -106,7 +106,7 @@
 
 .percent {
   margin-left: 0.5rem;
-  color: #0a7c36;
+  color: #86269e;
   font-weight: 600;
   display: flex;
   font-size: 15px;
@@ -200,10 +200,10 @@
   0%,
   100% {
     transform: scale(1);
-    box-shadow: 0 3px 8px rgba(16, 185, 129, 0.35);
+    box-shadow: 0 3px 8px rgba(151, 44, 197, 0.35);
   }
   50% {
     transform: scale(1.08);
-    box-shadow: 0 6px 14px rgba(16, 185, 129, 0.45);
+    box-shadow: 0 6px 14px rgba(171, 16, 185, 0.45);
   }
 }

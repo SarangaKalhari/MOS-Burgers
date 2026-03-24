@@ -29,7 +29,7 @@
 .title span {
   position: relative;
   padding: 0.6rem;
-  background: linear-gradient(135deg, #34d399, #10b981);
+  background: linear-gradient(135deg, #eca53b, #e99324);
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 50%;
@@ -56,7 +56,7 @@
 
 .percent {
   margin-left: 0.5rem;
-  color: #0a7c36;
+  color: #FF8B5A;
   font-weight: 600;
   display: flex;
   font-size: 15px;
@@ -94,7 +94,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(90deg, #34d399, #10b981);
+  background: linear-gradient(90deg, #e98458, #FF8B5A);
   width: 0%;
   height: 100%;
   border-radius: inherit;
@@ -150,10 +150,10 @@
   0%,
   100% {
     transform: scale(1);
-    box-shadow: 0 3px 8px rgba(16, 185, 129, 0.35);
+    box-shadow: 0 3px 8px #FF8B5A;
   }
   50% {
     transform: scale(1.08);
-    box-shadow: 0 6px 14px rgba(16, 185, 129, 0.45);
+    box-shadow: 0 6px 14px #FF8B5A;
   }
 }

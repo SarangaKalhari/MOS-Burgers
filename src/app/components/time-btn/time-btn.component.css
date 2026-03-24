@@ -7,7 +7,7 @@ button {
 }
 
 /* bn39 main style (outer gradient border) */
-.bn39 {
+/* .bn39 {
   background-image: linear-gradient(135deg, #008aff, #86d472);
   border-radius: 30px;
   height: 50px;
@@ -17,7 +17,7 @@ button {
   width: 7em;
   position: relative;
   overflow: hidden;
-}
+} */
 
 /* inner content */
 .bn39 .bn39span {
@@ -35,7 +35,8 @@ button {
 .bn39:hover .bn39span,
 .bn39.active .bn39span {
   background: transparent;
-  color: #fff;
+  color: #000;
+  /* background-image: linear-gradient(135deg, #008aff, #86d472); */
 }
 
 /* subtle press effect */
