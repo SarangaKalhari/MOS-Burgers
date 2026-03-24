@@ -14,7 +14,7 @@ import { ChartComponent } from "../../components/chart/chart.component";
 
 @Component({
   selector: 'app-sales',
-  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent, OrdersCardComponent, TopItemCardComponent, ProductListComponent, TopProductsComponent, ChartComponent],
+  imports: [SideBarComponent, TimeBtnComponent, RevenueCardComponent, OrdersCardComponent, TopItemCardComponent,  TopProductsComponent, ChartComponent],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css'
 })
