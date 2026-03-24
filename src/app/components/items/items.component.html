@@ -1,15 +1,13 @@
-<div class="bg-white rounded-2xl shadow-sm border border-gray-100">
+<div class="bg-white rounded-2xl shadow border overflow-hidden border-gray-100">
 
     <!-- Header -->
-    <div class="flex items-center justify-between p-4 md:p-6 border-b bg-gray-50 border-gray-100">
+    <!-- <div class="flex items-center justify-between p-4 md:p-6 border-b bg-gray-50 border-gray-100">
         <h2 class="text-lg font-semibold text-gray-800">Items</h2>
 
-        <button 
-          
-          class="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition">
-          + Add Item
+        <button class="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition">
+            + Add Item
         </button>
-    </div>
+    </div> -->
 
     <!-- Table Wrapper (responsive) -->
     <div class="overflow-x-auto">
@@ -48,26 +46,23 @@
                     </td>
 
                     <!-- Title -->
-                    <td class="px-6 py-4 text-sm font-medium text-gray-700">
+                    <td class="px-6 py-4 text-sm font-semibold text-gray-700">
                         {{ item.title }}
                     </td>
 
                     <!-- Status -->
                     <td class="px-6 py-4">
-                        <span 
-                          class="px-3 py-1 text-xs font-semibold rounded-full"
-                          [ngClass]="{
-                            'bg-green-100 text-green-700': item.status === 'Available',
+                        <span class="px-3 py-1 text-xs font-bold rounded-full" [ngClass]="{
+                            'bg-green-100  text-green-700': item.status === 'Available',
                             'bg-yellow-100 text-yellow-700': item.status === 'Low',
                             'bg-red-100 text-red-700': item.status === 'UnAvailable'
-                          }"
-                        >
+                          }">
                             {{ item.status }}
                         </span>
                     </td>
 
                     <!-- Stock -->
-                    <td class="px-6 py-4 text-sm text-gray-600 font-medium">
+                    <td class="px-6 py-4 text-sm text-gray-600 font-semibold">
                         {{ item.stock }}
                     </td>
 
@@ -80,14 +75,21 @@
                     <td class="px-6 py-4 text-right">
                         <div class="flex justify-end gap-2">
 
-                            <button 
-                              class="px-3 py-1 text-xs rounded-md bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition">
-                              Edit
+                            <button class="p-2 rounded-lg bg-indigo-50 hover:bg-indigo-100">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M12 20h9" />
+                                    <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+                                </svg>
                             </button>
 
-                            <button 
-                              class="px-3 py-1 text-xs rounded-md bg-red-50 text-red-600 hover:bg-red-100 transition">
-                              Delete
+                            <button class="p-2 rounded-lg bg-red-50 hover:bg-red-100">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M3 6h18" />
+                                    <path d="M8 6V4h8v2" />
+                                    <path d="M19 6l-1 14H6L5 6" />
+                                </svg>
                             </button>
 
                         </div>
