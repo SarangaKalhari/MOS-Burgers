@@ -32,7 +32,7 @@
 
             <!-- Total Price -->
             <div class="text-sm font-semibold text-gray-900">
-                Rs {{ item.price * item.qty }}
+                Rs {{ item.price * item.qty | number: '1.2-2'}}
             </div>
 
             <!-- Remove Button -->
