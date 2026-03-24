@@ -1,35 +1,87 @@
+/* Base button cleanup */
+button {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+/* bn39 main style (outer gradient border) */
 .bn39 {
   background-image: linear-gradient(135deg, #008aff, #86d472);
   border-radius: 30px;
-  box-sizing: border-box;
-  color: #000;
-  display: block;
   height: 50px;
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 600;
   padding: 4px;
-  text-decoration: none;
   width: 7em;
+  position: relative;
+  overflow: hidden;
 }
 
+/* inner content */
 .bn39 .bn39span {
+  display: flex;
   align-items: center;
+  justify-content: center;
   background: #ffffff;
   border-radius: 30px;
-  display: flex;
-  justify-content: center;
   height: 100%;
   width: 100%;
+  transition: all 0.3s ease;
 }
 
-/* hover */
-.bn39:hover .bn39span {
-  background: transparent;
-  color: white;
-}
-
-/* click (active state) */
+/* ✅ hover = active (Angular click state) */
+.bn39:hover .bn39span,
 .bn39.active .bn39span {
   background: transparent;
-  color: white;
+  color: #fff;
+}
+
+/* subtle press effect */
+.bn39:active {
+  transform: scale(0.96);
+}
+
+/* =============================== */
+/* Gradient animation button (bn632-hover) */
+/* =============================== */
+
+.bn632-hover {
+  width: 160px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 50px;
+  background-size: 300% 100%;
+  transition: all 0.4s ease-in-out;
+}
+
+/* gradient active state */
+.bn632-hover.bn18 {
+  background-image: linear-gradient(
+    to right,
+    #2286c5,
+    #41c6bd,
+    #25b9c6,
+    #4c86e2
+  );
+  box-shadow: 0 4px 15px rgba(49, 196, 190, 0.6);
+}
+
+/* hover + click SAME */
+.bn632-hover:hover,
+.bn632-hover.active {
+  background-position: 100% 0;
+}
+
+/* press feedback */
+.bn632-hover:active {
+  transform: scale(0.96);
+}
+
+/* non-active text */
+.btnNonActive {
+  color: black;
 }
