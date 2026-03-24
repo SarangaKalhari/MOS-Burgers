@@ -13,11 +13,12 @@ import { DessertsService } from '../../services/desserts.service';
 import { CategoryButtonsComponent } from '../../components/category-buttons/category-buttons.component';
 import { HttpClient } from '@angular/common/http';
 import { Item } from '../../model/Item.model';
+import { RouterLink } from "@angular/router";
 
 
 @Component({
   selector: 'app-burgers',
-  imports: [NavBarComponent, SideBarComponent, SearchBarComponent, CardComponent, OrderPanelComponent, BillPrintComponent, CategoryButtonsComponent],
+  imports: [NavBarComponent, SideBarComponent, SearchBarComponent, CardComponent, OrderPanelComponent, BillPrintComponent, CategoryButtonsComponent, RouterLink],
   templateUrl: './burgers.component.html',
   styleUrl: './burgers.component.css'
 })
@@ -182,7 +183,7 @@ export class BurgersComponent implements OnInit {
     return this.http.get<any[]>('http://localhost:8080/dessert/ice%20cream');
   }
 
-  getGelato(){
+  getGelato() {
     return this.http.get<any[]>('http://localhost:8080/dessert/gelato');
   }
 
@@ -220,14 +221,14 @@ export class BurgersComponent implements OnInit {
         break;
       case 'Ice Cream':
         this.getIceCream().subscribe(data => {
-          
+
           this.visibleItems = data;
           console.log(data);
         });
         break;
       case 'Gelato':
         this.getGelato().subscribe(data => {
-          
+
           this.visibleItems = data;
           console.log(data);
         });

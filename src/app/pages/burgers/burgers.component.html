@@ -9,7 +9,7 @@
     <!-- Main Content -->
     <div class="flex flex-col lg:col-span-8 md:col-span-8 sm:col-span-8 h-full  w-full overflow-hidden p-4">
 
-        <app-search-bar></app-search-bar>
+        <app-search-bar routerLink="/search"></app-search-bar>
 
         <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-2">
             @for(button of buttons; track button.name){
@@ -19,15 +19,7 @@
             }
         </div>
 
-        <!-- @if(subCategories.length > 0){
-        <div class="flex gap-2 mt-3 overflow-x-auto">
-            @for(sub of subCategories; track sub){
-            <app-category-buttons [subCategory]="sub" [active]="selectedSubCategory === sub"
-                (subCategoryClick)="selectSubCategory($event)">
-            </app-category-buttons>
-            }
-        </div>
-        } -->
+
         <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-2">
             @for(sub of subCategories; track sub){
             <app-category-buttons [subCategory]="sub" [active]="selectedSubCategory === sub"
