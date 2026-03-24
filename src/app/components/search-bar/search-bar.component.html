@@ -1,3 +1,8 @@
-<!-- Search -->
-<input type="text" placeholder="Search Your Menu Here"
-    class="w-full p-3 rounded-xl border-3 focus:outline-none focus:ring-2 focus:ring-blue-400 navSearch" />
+<input
+  type="text"
+  placeholder="Search items..."
+  class="w-full p-3 rounded-xl border-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+  [(ngModel)]="searchText"
+  (keydown.enter)="onSearch()"
+  (input)="onInput()"
+/>
