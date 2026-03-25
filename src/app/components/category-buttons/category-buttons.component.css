@@ -90,7 +90,7 @@ button:focus {
     #65beb3,
     #70db96
   );
-  border-radius: 30px;
+  border-radius: 15px;
   border: 0;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -102,7 +102,7 @@ button:focus {
   font-size: 17px;
   font-weight: 500;
   background: #ebebeb;
-  border-radius: 30px;
+  border-radius: 15px;
 }
 
 /* Hover effect */
