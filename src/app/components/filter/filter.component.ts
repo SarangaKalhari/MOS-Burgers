@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './filter.component.css'
 })
 export class FilterComponent {
+
+  @Output() filterChanged = new EventEmitter<any>();
 
   searchQuery: string = '';
   activeDropdown: string | null = null;
@@ -21,10 +23,10 @@ export class FilterComponent {
       selectedValue: null as string | null,
       selectedLabel: null as string | null,
       items: [
-        { label: 'Electronics', value: 'electronics' },
-        { label: 'Fashion', value: 'fashion' },
-        { label: 'Home & Garden', value: 'home' },
-        { label: 'Toys', value: 'toys' }
+        { label: 'Burgers', value: 'electronics' },
+        { label: 'Beverages', value: 'fashion' },
+        { label: 'Appertizers', value: 'home' },
+        { label: 'Desserts', value: 'toys' }
       ]
     },
     {
@@ -35,7 +37,7 @@ export class FilterComponent {
       items: [
         { label: 'In Stock', value: 'instock' },
         { label: 'Out of Stock', value: 'outofstock' },
-        { label: 'Pre-order', value: 'preorder' }
+        { label: 'Low of Stock', value: 'preorder' }
       ]
     }
   ];
@@ -51,7 +53,7 @@ export class FilterComponent {
   // එක අගයක් පමණක් තෝරාගැනීමේ Logic එක
   selectSingleItem(filterName: string, item: any) {
     const filter = this.filters.find(f => f.name === filterName);
-    
+
     if (filter) {
       // දැනටමත් තෝරා ඇති එකම නැවත click කළහොත් එය ඉවත් කරන්න (Deselect)
       if (filter.selectedValue === item.value) {
@@ -62,7 +64,7 @@ export class FilterComponent {
         filter.selectedValue = item.value;
         filter.selectedLabel = item.label;
       }
-      
+
       this.activeDropdown = null; // Selection එකෙන් පසු dropdown එක වසන්න
       this.updateChips();
     }
@@ -80,26 +82,35 @@ export class FilterComponent {
   }
 
   // Chip එකේ ඇති 'X' ලකුණ එබූ විට ඉවත් කිරීම
+  // removeChip(filterName: string) {
+  //   const filter = this.filters.find(f => f.name === filterName);
+  //   if (filter) {
+  //     filter.selectedValue = null;
+  //     filter.selectedLabel = null;
+  //     this.updateChips();
+  //   }
+  // }
+
+  // 'Apply' button එක එබූ විට සිදුවිය යුතු දේ
+  applyFilters() {
+    const selectedData = {
+      search: this.searchQuery,
+      category: this.filters.find(f => f.name === 'category')?.selectedValue,
+      status: this.filters.find(f => f.name === 'status')?.selectedValue
+    };
+
+    // Parent component එකට දත්ත යවන්න
+    this.filterChanged.emit(selectedData);
+  }
+
+  // Chip එකක් ඉවත් කළ විටද table එක update වීමට මෙය එක් කරන්න
   removeChip(filterName: string) {
     const filter = this.filters.find(f => f.name === filterName);
     if (filter) {
       filter.selectedValue = null;
       filter.selectedLabel = null;
       this.updateChips();
+      this.applyFilters(); // Auto-apply filters after removing chip
     }
-  }
-
-  // 'Apply' button එක එබූ විට සිදුවිය යුතු දේ
-  applyFilters() {
-    const selectedData = {
-      search: this.searchQuery,
-      filters: this.filters.map(f => ({
-        name: f.name,
-        value: f.selectedValue
-      }))
-    };
-    
-    console.log('Applying Filters:', selectedData);
-    // මෙහිදී ඔබට service එකක් හරහා API එකට දත්ත යැවිය හැක.
   }
 }
