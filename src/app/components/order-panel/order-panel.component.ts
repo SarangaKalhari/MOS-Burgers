@@ -47,12 +47,7 @@ export class OrderPanelComponent implements OnInit {
     console.log(this.cartItems);
   }
 
-  // getTotal() {
-  //   return this.cartItems.reduce(
-  //     (sum, item) => sum + (item.unitPrice * item.quantity),
-  //     0
-  //   );
-  // }
+  
 
   checkout() {
 
@@ -101,6 +96,7 @@ export class OrderPanelComponent implements OnInit {
       0
     );
   }
+
 
 
 }
