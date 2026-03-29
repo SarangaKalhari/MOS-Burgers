@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-filter',
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class FilterComponent {
 
   @Output() filterChanged = new EventEmitter<any>();
+  private searchSubject: Subject<string> = new Subject();
 
   searchQuery: string = '';
   activeDropdown: string | null = null;
@@ -99,7 +101,7 @@ export class FilterComponent {
       status: this.filters.find(f => f.name === 'status')?.selectedValue
     };
 
-    // Parent component එකට දත්ත යවන්න
+    // Parent component send karana data
     this.filterChanged.emit(selectedData);
   }
 
@@ -112,5 +114,21 @@ export class FilterComponent {
       this.updateChips();
       this.applyFilters(); // Auto-apply filters after removing chip
     }
+  }
+
+  ngOnInit() {
+    // Live search: trigger applyFilters after user stops typing
+    this.searchSubject.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(searchText => {
+      this.searchQuery = searchText;
+      this.applyFilters();
+    });
+  }
+
+  // Call this on input change
+  onSearchChange(query: string) {
+    this.searchSubject.next(query);
   }
 }
