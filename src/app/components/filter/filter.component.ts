@@ -25,10 +25,10 @@ export class FilterComponent {
       selectedValue: null as string | null,
       selectedLabel: null as string | null,
       items: [
-        { label: 'Burgers', value: 'electronics' },
-        { label: 'Beverages', value: 'fashion' },
-        { label: 'Appertizers', value: 'home' },
-        { label: 'Desserts', value: 'toys' }
+        { label: 'Burgers', value: 'burgers' },
+        { label: 'Beverages', value: 'beverages' },
+        { label: 'Appertizers', value: 'appetizers' },
+        { label: 'Desserts', value: 'desserts' }
       ]
     },
     {
@@ -39,7 +39,7 @@ export class FilterComponent {
       items: [
         { label: 'In Stock', value: 'instock' },
         { label: 'Out of Stock', value: 'outofstock' },
-        { label: 'Low of Stock', value: 'preorder' }
+        { label: 'Low of Stock', value: 'lowstock' }
       ]
     }
   ];

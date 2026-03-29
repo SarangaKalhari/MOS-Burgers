@@ -75,6 +75,9 @@ getTotal(): number {
       case 'JUICE': return 'BEVERAGES';
       case 'ICE CREAM': return 'DESSERTS';
       case 'GELATO': return 'DESSERTS';
+      case 'FAST FOOD': return 'APPETIZERS';
+      case 'CHEESE': return 'APPETIZERS';
+
 
       default: return defaultCode || 'UNKNOWN';
     }

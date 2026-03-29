@@ -32,15 +32,15 @@ export class OrdersComponent implements OnInit {
       beverages: this.beverageService.getBeverages(),
       desserts: this.dessertService.getDesserts(),
       appetizers: this.beverageService.getAppetizers()
-    }).subscribe(({ burgers, beverages, desserts }) => {
+    }).subscribe(({ burgers, beverages, desserts, appetizers }) => {
       // මෙහිදී 'type' එක ලෙස Filter එකේ ඇති values (electronics, fashion) ලබා දෙන්න
-      const b = burgers.map(i => ({ ...i, type: 'electronics', status: this.calculateStatus(i.stock) }));
-      const bev = beverages.map(i => ({ ...i, type: 'fashion', status: this.calculateStatus(i.stock) }));
-      const d = desserts.map(i => ({ ...i, type: 'toys', status: this.calculateStatus(i.stock) }));
-      const a = desserts.map(i => ({ ...i, type: 'toys', status: this.calculateStatus(i.stock) }));
+      const b = burgers.map(i => ({ ...i, type: 'burgers', status: this.calculateStatus(i.stock) }));
+      const bev = beverages.map(i => ({ ...i, type: 'beverages', status: this.calculateStatus(i.stock) }));
+      const d = desserts.map(i => ({ ...i, type: 'desserts', status: this.calculateStatus(i.stock) }));
+      const a = appetizers.map(i => ({ ...i, type: 'appetizers', status: this.calculateStatus(i.stock) }));
 
 
-      this.allOriginalItems = [...b, ...bev, ...d];
+      this.allOriginalItems = [...b, ...bev, ...d, ...a];
       this.filteredItems = [...this.allOriginalItems];
     });
   }
@@ -66,7 +66,7 @@ export class OrdersComponent implements OnInit {
 
   mapStatus(status: string): string {
     if (status === 'Available') return 'instock';
-    if (status === 'Low') return 'preorder';
+    if (status === 'Low') return 'lowstock';
     return 'outofstock';
   }
 }

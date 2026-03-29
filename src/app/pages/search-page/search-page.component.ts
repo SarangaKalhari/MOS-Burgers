@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
 import { SideBarComponent } from '../../components/side-bar/side-bar.component';
 import { CardComponent } from "../../components/card/card.component";
-import { Burger } from '../../model/Burger.model';
+import { Appertizers, Burger } from '../../model/Burger.model';
 import { Beverages } from '../../model/Beverages.model';
 import { Desserts } from '../../model/Desserts.model';
 import { BurgerService } from '../../services/burger.service';
@@ -25,6 +25,7 @@ export class SearchPageComponent implements OnInit {
   burger: Burger[] = [];
   beverages: Beverages[] = [];
   desserts: Desserts[] = [];
+  appetizers: Appertizers[] = [];
   visibleItems: any[] = [];
   searchText: string = '';  // For binding the search bar input
   searchSubject = new Subject<string>();
@@ -56,6 +57,11 @@ export class SearchPageComponent implements OnInit {
       this.mergeItems();
     });
 
+    this.beverageService.getAppetizers().subscribe(apt => {
+      this.appetizers = apt;
+      this.mergeItems();
+    });
+
     this.dessertService.getDesserts().subscribe(desserts => {
       this.desserts = desserts;
       this.mergeItems();
@@ -71,7 +77,9 @@ export class SearchPageComponent implements OnInit {
     this.allItems = [
       ...this.burger,
       ...this.beverages,
-      ...this.desserts
+      ...this.desserts,
+      ...this.appetizers
+      
     ];
 
     console.log("All items are: ", this.allItems);
