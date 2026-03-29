@@ -1,0 +1,36 @@
+<body class="bg-gray-100 font-sans min-h-screen grid grid-cols-1 md:grid-cols-12">
+
+    <!-- Sidebar -->
+    <div class="md:col-span-1 col-span-1 ">
+        <app-side-bar></app-side-bar>
+    </div>
+
+    <!-- Main Content -->
+    <div class="md:col-span-11 lg:col-span-10 col-span-1 p-3 md:p-4 lg:p-6 grid grid-rows-[auto_auto_1fr] gap-4 overflow-auto">
+
+        <!-- Time Buttons -->
+        <div class="flex gap-2 md:gap-3 flex-wrap overflow-x-auto">
+            @for(t of times; track t){
+            <app-time-btn [time]="t" [active]="selectedTime === t" (timeClick)="selectTime($event)">
+            </app-time-btn>
+            }
+        </div>
+
+        <!-- Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <app-revenue-card [selectedTime]="selectedTime" [revenue]="revenue"></app-revenue-card>
+
+            <app-orders-card [selectedTime]="selectedTime" [orders]="orders"></app-orders-card>
+
+            <app-top-item-card [selectedTime]="selectedTime" [item]="item"></app-top-item-card>
+        </div>
+
+        <!-- Charts + Products -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <app-chart></app-chart>
+            <app-top-products [selectedTime]="selectedTime"></app-top-products>
+        </div>
+
+    </div>
+
+</body>

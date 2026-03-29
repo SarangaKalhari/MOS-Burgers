@@ -1,0 +1,52 @@
+<body class="bg-gray-100 font-sans grid grid-cols-1 lg:grid-cols-12 md:grid-cols-12 sm:grid-cols-12 h-screen">
+
+    <!-- Sidebar -->
+    <div class=" lg:col-span-1 h-screen md:col-span-1 sm:col-span-1">
+        <app-side-bar></app-side-bar>
+    </div>
+
+
+    <!-- Main Content -->
+    <div class="flex flex-col lg:col-span-8 md:col-span-8 sm:col-span-8 h-full  w-full overflow-hidden p-4">
+
+        <app-search-bar></app-search-bar>
+
+        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-2">
+            @for(button of buttons; track button.name){
+
+            <app-nav-bar [button]="button" [active]="selectedCategory === button.name"
+                (click)="selectCategory(button.name)"></app-nav-bar>
+            }
+        </div>
+
+        <!-- Card Section -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 mt-4 overflow-auto">
+            @if (visibleItems.length > 0) {
+            @for (items of visibleItems; track items.id) {
+            <app-card [items]="items"></app-card>
+            }
+            } @else {
+            <p class="text-gray-400">No items available</p>
+            }
+
+        </div>
+
+    </div>
+
+
+    <div class="lg:col-span-3 md:col-span-3 sm:col-span-3 h-full overflow-auto">
+
+        <app-order-panel (paymentClick)="proceedPayment()">
+        </app-order-panel>
+
+        @if(showBill){
+        <app-bill-print [cartItems]="cartItems" [total]="total" (closeBill)="showBill = false">
+        </app-bill-print>
+        }
+
+    </div>
+
+
+
+
+</body>

@@ -1,0 +1,35 @@
+/* subtle custom animation & fine-tuning for the bars */
+.bar-transition {
+    transition: height 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), background-color 0.2s ease;
+}
+
+/* tooltip-like micro interaction on hover */
+.bar-hover:hover {
+    filter: brightness(0.95);
+    transform: scaleX(1.02);
+    transition: all 0.15s ease;
+}
+
+body {
+    background: linear-gradient(145deg, #f6f9fc 0%, #eef2f5 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+}
+
+/* custom scroll for extra small devices if needed */
+.chart-container {
+    backdrop-filter: blur(0px);
+}
+
+/* custom card shadow with soft border */
+.card-elegant {
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(166, 194, 220, 0.2);
+}
+
+.day-label {
+    letter-spacing: 0.02em;
+}

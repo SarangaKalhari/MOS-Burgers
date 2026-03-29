@@ -1,0 +1,18 @@
+<body class="bg-gray-100 font-sans grid grid-cols-1 lg:grid-cols-12 md:grid-cols-12 sm:grid-cols-12 h-screen">
+
+    <!-- Sidebar -->
+    <div class=" lg:col-span-1 h-screen md:col-span-1 sm:col-span-1">
+        <app-side-bar></app-side-bar>
+    </div>
+
+    <div class="col-span-10 sm:col-span-11 md:col-span-10 lg:col-span-11 overflow-auto m-3 mt-6">
+
+        <!-- <app-search></app-search> -->
+        <div class="p-6 bg-gray-100 min-h-screen">
+            <app-filter (filterChanged)="onFilterApplied($event)"></app-filter>
+
+            <app-items [allItems]="filteredItems"></app-items>
+        </div>
+    </div>
+
+</body>

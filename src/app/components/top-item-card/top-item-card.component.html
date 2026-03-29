@@ -1,0 +1,52 @@
+<!-- <div class="bg-linear-to-r from-gray-500 to-blue-500 text-white p-6 rounded-2xl shadow-lg w-full max-w-sm">
+
+  
+
+  <p class="text-lg opacity-80 text-white font-bold">
+    {{ selectedTime }} Top Item
+  </p>
+
+  @for(i of item; track i){
+  
+    <h2 class="text-3xl font-bold mt-2">
+      {{ i.itemCode }}
+    </h2>
+    <p>Total Sold: {{ i.totalSold }}</p>
+  
+
+  }
+
+</div> -->
+
+<div class="card">
+  <div class="title">
+    <span></span>
+
+    <p class="title-text">{{ selectedTime }} Top Item</p>
+
+    <p class="percent">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+        <path
+          d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z">
+        </path>
+      </svg>
+    </p>
+  </div>
+
+  @for(i of item; track i){
+  <div class="data">
+
+    <!-- Same line -->
+    <div class="flex justify-between items-center">
+      <p>{{ i.itemCode }}</p>
+      <p>{{ i.totalSold }}</p>
+    </div>
+
+    <div class="range">
+      <div class="fill"></div>
+    </div>
+
+  </div>
+  }
+
+</div>
