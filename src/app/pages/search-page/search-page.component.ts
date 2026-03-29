@@ -10,10 +10,12 @@ import { BeveragesService } from '../../services/beverages.service';
 import { DessertsService } from '../../services/desserts.service';
 import { debounceTime, Subject } from 'rxjs';
 import { OrderPanelComponent } from '../../components/order-panel/order-panel.component';
+import { BillPrintComponent } from '../../components/bill-print/bill-print.component';
+import { CartServiceService } from '../../services/cart-service.service';
 
 @Component({
   selector: 'app-search-page',
-  imports: [SearchBarComponent, SideBarComponent, CardComponent, OrderPanelComponent],
+  imports: [SearchBarComponent, SideBarComponent, CardComponent, OrderPanelComponent, BillPrintComponent],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.css'
 })
@@ -26,12 +28,20 @@ export class SearchPageComponent implements OnInit {
   visibleItems: any[] = [];
   searchText: string = '';  // For binding the search bar input
   searchSubject = new Subject<string>();
+  
+    showBill = false;
+  
+    billData: any;
+  
+  
+    cartItems: any[] = [];
+    total: number = 0;
 
   constructor(
     private burgerService: BurgerService,
     private beverageService: BeveragesService,
-    private dessertService: DessertsService
-    // private orderService: OrderPanelComponent
+    private dessertService: DessertsService,
+    private cartService: CartServiceService
   ) {}
 
   ngOnInit(): void {
@@ -81,5 +91,23 @@ export class SearchPageComponent implements OnInit {
     );
 
     console.log("Filtered items: ", this.visibleItems);
+  }
+
+  proceedPayment() {
+    this.calculateTotal();
+    this.cartItems = this.cartService.getCartItems();
+    this.total = this.cartService.getTotal();
+
+    if (this.cartItems.length === 0) {
+      alert("Cart is empty");
+      return;
+    }
+
+    this.showBill = true;
+  }
+
+  calculateTotal() {
+    // temporary sample value
+    this.total = 2500;
   }
 }
