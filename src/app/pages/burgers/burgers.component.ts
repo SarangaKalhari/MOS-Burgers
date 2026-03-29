@@ -33,6 +33,8 @@ export class BurgersComponent implements OnInit {
 
   desserts: Item[] = [];
 
+  appetizers: Item[] = [];
+
   chickenBurgers: any[] = [];
 
   selectedCategory: string = 'burger';
@@ -74,6 +76,13 @@ export class BurgersComponent implements OnInit {
 
     this.beveragesService.getBeverages().subscribe(data => {
       this.beverages = data;
+      console.log(this.visibleItems);
+      if (data.length > 0) {
+      }
+    });
+
+    this.beveragesService.getAppetizers().subscribe(data => {
+      this.appetizers = data;
       console.log(this.visibleItems);
       if (data.length > 0) {
       }
@@ -131,6 +140,13 @@ export class BurgersComponent implements OnInit {
         })
         source = this.desserts;
         break;
+
+      case 'appetizers':
+        this.beveragesService.getAppetizersCategories().subscribe(data => {
+          this.subCategories = data;
+        })
+        source = this.appetizers;
+        break;
     }
 
     this.visibleItems = [...source];
@@ -187,6 +203,24 @@ export class BurgersComponent implements OnInit {
     return this.http.get<any[]>('http://localhost:8080/dessert/gelato');
   }
 
+  getChickenApt() {
+    return this.http.get<any[]>('http://localhost:8080/appetizers/Chicken');
+  }
+
+  getVegApt() {
+    return this.http.get<any[]>('http://localhost:8080/appetizers/Veg');
+  }
+
+  getCheeseApt() {
+    return this.http.get<any[]>('http://localhost:8080/appetizers/Cheese');
+
+  }
+
+  getFastFoodApt() {
+    return this.http.get<any[]>('http://localhost:8080/appetizers/Fast Food');
+  }
+
+
   selectSubCategory(sub: string) {
 
     let source: any[] = [];
@@ -228,6 +262,38 @@ export class BurgersComponent implements OnInit {
         break;
       case 'Gelato':
         this.getGelato().subscribe(data => {
+
+          this.visibleItems = data;
+          console.log(data);
+        });
+        break;
+
+      case 'Chicken':
+        this.getChickenApt().subscribe(data => {
+
+          this.visibleItems = data;
+          console.log(data);
+        });
+        break;
+
+      case 'Veg':
+        this.getVegApt().subscribe(data => {
+
+          this.visibleItems = data;
+          console.log(data);
+        });
+        break;
+
+      case 'Cheese':
+        this.getCheeseApt().subscribe(data => {
+
+          this.visibleItems = data;
+          console.log(data);
+        });
+        break;
+
+      case 'Fast Food':
+        this.getFastFoodApt().subscribe(data => {
 
           this.visibleItems = data;
           console.log(data);

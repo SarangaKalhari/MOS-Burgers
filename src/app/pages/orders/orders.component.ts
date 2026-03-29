@@ -30,12 +30,15 @@ export class OrdersComponent implements OnInit {
     forkJoin({
       burgers: this.burgerService.getBurgers(),
       beverages: this.beverageService.getBeverages(),
-      desserts: this.dessertService.getDesserts()
+      desserts: this.dessertService.getDesserts(),
+      appetizers: this.beverageService.getAppetizers()
     }).subscribe(({ burgers, beverages, desserts }) => {
       // මෙහිදී 'type' එක ලෙස Filter එකේ ඇති values (electronics, fashion) ලබා දෙන්න
       const b = burgers.map(i => ({ ...i, type: 'electronics', status: this.calculateStatus(i.stock) }));
       const bev = beverages.map(i => ({ ...i, type: 'fashion', status: this.calculateStatus(i.stock) }));
       const d = desserts.map(i => ({ ...i, type: 'toys', status: this.calculateStatus(i.stock) }));
+      const a = desserts.map(i => ({ ...i, type: 'toys', status: this.calculateStatus(i.stock) }));
+
 
       this.allOriginalItems = [...b, ...bev, ...d];
       this.filteredItems = [...this.allOriginalItems];

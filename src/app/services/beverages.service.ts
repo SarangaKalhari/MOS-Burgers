@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Beverages } from '../model/Beverages.model';
 import { Item } from '../model/Item.model';
+import { Appertizers } from '../model/Burger.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,13 @@ export class BeveragesService {
 
   getBeveragesSubCategories() {
     return this.http.get<string[]>('http://localhost:8080/beverages/categories');
+  }
+
+  getAppetizers(): Observable<Appertizers[]>{
+    return this.http.get<Item[]>('http://localhost:8080/appetizers');
+  }
+
+  getAppetizersCategories(){
+    return this.http.get<string[]>('http://localhost:8080/appetizers/categories');
   }
 }

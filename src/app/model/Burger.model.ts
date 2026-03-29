@@ -9,3 +9,15 @@ export interface Burger{
     stock: number;
     
 }
+
+export interface Appertizers{
+
+    id: number;
+    code: string;
+    title: string;
+    image: string;
+    price: number;
+    category: string;
+    stock: number;
+    
+}
