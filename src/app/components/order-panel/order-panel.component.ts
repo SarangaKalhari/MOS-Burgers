@@ -99,10 +99,22 @@ getTotal(): number {
       next: res => {
         console.log(res);
         alert('Order Placed Successfully!');
+
+        // ----- Refresh Order Panel -----
+        this.cartItems = [];               // clear local cart
+        this.discount = 0;                 // reset discount if needed
+        this.paymentMethod = 'CASH';       // reset payment method if needed
+        this.cartService.clearCart();      // clear cart in service so UI updates everywhere
       },
       error: err => {
         console.error('ERROR:', err);
         console.error('BACKEND:', err.error?.message);
+
+        // ----- Refresh Order Panel -----
+        this.cartItems = [];               // clear local cart
+        this.discount = 0;                 // reset discount if needed
+        this.paymentMethod = 'CASH';       // reset payment method if needed
+        this.cartService.clearCart();      // clear cart in service so UI updates everywhere
       }
     });
   }
